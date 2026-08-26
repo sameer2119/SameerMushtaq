@@ -160,8 +160,75 @@ if (contactForm) {
     });
 }
 
+// Theme switching functionality
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('preferred-theme', theme);
+}
+
+function initializeTheme() {
+    const savedTheme = localStorage.getItem('preferred-theme') ||
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setTheme(savedTheme);
+}
+
+function setupThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeMenu = document.getElementById('theme-menu');
+
+    if (themeToggle && themeMenu) {
+        themeToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themeMenu.classList.toggle('active');
+        });
+
+        const themeOptions = themeMenu.querySelectorAll('.theme-option');
+        themeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const theme = option.getAttribute('data-theme');
+                setTheme(theme);
+                themeMenu.classList.remove('active');
+
+                // Update active state
+                themeOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!themeMenu.contains(e.target) && !themeToggle.contains(e.target)) {
+                themeMenu.classList.remove('active');
+            }
+        });
+
+        // Set initial active state
+        const activeOption = themeMenu.querySelector(`.theme-option[data-theme="${document.documentElement.getAttribute('data-theme')}"]`);
+        if (activeOption) {
+            activeOption.classList.add('active');
+        }
+    }
+}
+
+// Initialize on load
+// Mobile menu close function
+function closeMobileMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const navToggle = document.querySelector('.nav-toggle');
+    if (navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+        const hamburger = navToggle.querySelector('.hamburger');
+        if (hamburger) {
+            hamburger.style.transform = 'none';
+        }
+    }
+}
+
 // Initialize on load
 document.addEventListener('DOMContentLoaded', () => {
+    initializeTheme();
+    setupThemeToggle();
     initCanvas();
     handleScroll();
 
@@ -189,6 +256,18 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
+    });
+
+    // Recalculate canvas size on resize
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+    });
+
+    // Close mobile menu on nav link click
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            closeMobileMenu();
+        });
     });
 });
 
