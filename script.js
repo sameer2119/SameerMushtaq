@@ -165,18 +165,37 @@
   }
 
   // --------------------------------------------------------------------------
-  // 3. Live Real-Time Telemetry Clock
+  // 3. Live Real-Time Telemetry Clock (Indian Standard Time - IST)
   // --------------------------------------------------------------------------
   function initLiveClock() {
     const clockEl = document.getElementById('sys-clock');
     if (!clockEl) return;
 
+    const istFormatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Asia/Kolkata',
+      hour12: true,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+
     function update() {
       const now = new Date();
-      const hours = String(now.getUTCHours()).padStart(2, '0');
-      const mins = String(now.getUTCMinutes()).padStart(2, '0');
-      const secs = String(now.getUTCSeconds()).padStart(2, '0');
-      clockEl.textContent = `${hours}:${mins}:${secs} UTC`;
+      try {
+        const istStr = istFormatter.format(now).toUpperCase();
+        clockEl.textContent = `${istStr} IST`;
+      } catch (e) {
+        // Fallback calculation for UTC+05:30
+        const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+        const istDate = new Date(utcMs + (330 * 60000));
+        let hours = istDate.getHours();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+        const hoursStr = String(hours).padStart(2, '0');
+        const mins = String(istDate.getMinutes()).padStart(2, '0');
+        const secs = String(istDate.getSeconds()).padStart(2, '0');
+        clockEl.textContent = `${hoursStr}:${mins}:${secs} ${ampm} IST`;
+      }
     }
     update();
     setInterval(update, 1000);
