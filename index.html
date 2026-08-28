@@ -58,7 +58,7 @@
     <div class="nav-container">
       <a href="#home" class="cyber-logo">
         <img src="./logo.png" alt="Digital Ninja Logo" class="nav-logo-img" />
-        <span class="logo-bracket">[</span><span class="text-cyan">DN</span><span class="logo-sep">::</span><span class="text-green">SAMEER</span><span class="logo-bracket">]</span>
+        <span class="logo-text"><span class="text-cyan">DIGITAL</span> <span class="text-green">NINJA</span></span>
       </a>
 
       <div class="cyber-nav-links" id="nav-links">
@@ -145,9 +145,33 @@
           </div>
         </div>
 
-        <!-- Right Column: Cyber HUD Avatar Card with 3-Way Laser Scan + Extreme Corner Controls Dock -->
+        <!-- Right Column: Top-Left Side Cyber Controls + Cyber HUD Avatar Card -->
         <div class="hero-right">
           <div class="hero-photo-cluster">
+            
+            <!-- Top-Left Side Cyber Controls Dock (Vertically Aligned on the Left Side of Photo) -->
+            <div class="hero-photo-dock" title="System Controls">
+              <span class="dock-tag">CTRL</span>
+              <!-- CLI / Matrix Stream Toggle -->
+              <button class="hero-dock-btn active" id="btn-toggle-matrix" title="Toggle Matrix Stream (CLI)" aria-label="Toggle Matrix Rain">
+                <i class="fas fa-terminal"></i>
+                <span class="dock-btn-label">CLI</span>
+              </button>
+
+              <!-- Audio FX Toggle -->
+              <button class="hero-dock-btn" id="btn-toggle-sound" title="Toggle Cyber Audio FX" aria-label="Toggle Audio Effects">
+                <i class="fas fa-volume-high"></i>
+                <span class="dock-btn-label">AUDIO</span>
+              </button>
+
+              <!-- Scanline Toggle -->
+              <button class="hero-dock-btn active" id="btn-toggle-crt" title="Toggle Scanlines" aria-label="Toggle Scanlines">
+                <i class="fas fa-tv"></i>
+                <span class="dock-btn-label">SCAN</span>
+              </button>
+            </div>
+
+            <!-- Photo HUD Card -->
             <div class="hud-card">
               <!-- HUD Bracket Corners -->
               <div class="hud-corner top-left"></div>
@@ -197,27 +221,6 @@
               </div>
             </div>
 
-            <!-- Extreme Corner Cyber Dock (CLI, SCAN, AUDIO) -->
-            <div class="hero-extreme-dock" title="System Controls">
-              <span class="dock-tag">CTRL</span>
-              <!-- CLI / Matrix Stream Toggle -->
-              <button class="hero-dock-btn" id="btn-toggle-matrix" title="Toggle Matrix Stream (CLI)" aria-label="Toggle Matrix Rain">
-                <i class="fas fa-terminal"></i>
-                <span class="dock-btn-label">CLI</span>
-              </button>
-
-              <!-- CRT Scanline Toggle -->
-              <button class="hero-dock-btn active" id="btn-toggle-crt" title="Toggle CRT Scanlines" aria-label="Toggle CRT Scanlines">
-                <i class="fas fa-tv"></i>
-                <span class="dock-btn-label">SCAN</span>
-              </button>
-
-              <!-- Audio FX Toggle -->
-              <button class="hero-dock-btn" id="btn-toggle-sound" title="Toggle Cyber Audio FX" aria-label="Toggle Audio Effects">
-                <i class="fas fa-volume-high"></i>
-                <span class="dock-btn-label">AUDIO</span>
-              </button>
-            </div>
           </div>
         </div>
       </div>

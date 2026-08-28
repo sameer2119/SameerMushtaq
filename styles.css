@@ -122,7 +122,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
   background-size: 100% 4px;
   z-index: 999;
   pointer-events: none;
@@ -131,7 +131,19 @@ body {
 }
 
 body.crt-enabled .crt-overlay {
-  display: block;
+  display: block !important;
+}
+
+body:not(.crt-enabled) .crt-overlay {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* When scanlines are turned off, also hide DP laser scan lines */
+body:not(.crt-enabled) .hud-scanline-v,
+body:not(.crt-enabled) .hud-scanline-h,
+body:not(.crt-enabled) .hud-scanline-diag {
+  display: none !important;
 }
 
 .text-cyan { color: var(--neon-cyan) !important; }
@@ -238,7 +250,7 @@ body.crt-enabled .crt-overlay {
 
 .cyber-logo {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 900;
   text-decoration: none;
   letter-spacing: 1px;
@@ -255,6 +267,14 @@ body.crt-enabled .crt-overlay {
   border: 1.5px solid var(--border-cyan);
   box-shadow: 0 0 15px rgba(0, 243, 255, 0.45);
   transition: all 0.3s ease;
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
 }
 
 .cyber-logo:hover .nav-logo-img {
@@ -380,8 +400,10 @@ body.crt-enabled .crt-overlay {
   gap: 0.4rem;
   text-decoration: none;
   background: rgba(0, 255, 65, 0.12);
-  border-color: var(--border-green);
+  border: 1px solid var(--border-green);
   color: var(--neon-green);
+  border-radius: 4px;
+  transition: all 0.2s ease;
 }
 
 .hud-btn-cv:hover {
@@ -705,7 +727,7 @@ body.crt-enabled .crt-overlay {
   transform: translateY(-2px);
 }
 
-/* Hero Right Photo Cluster with Extreme Corner Cyber Dock */
+/* Hero Right Photo Cluster with Top-Left Side Cyber Controls Dock */
 .hero-photo-cluster {
   display: flex;
   align-items: flex-start;
@@ -713,7 +735,7 @@ body.crt-enabled .crt-overlay {
   position: relative;
 }
 
-.hero-extreme-dock {
+.hero-photo-dock {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -726,6 +748,7 @@ body.crt-enabled .crt-overlay {
   position: relative;
   backdrop-filter: blur(10px);
   flex-shrink: 0;
+  margin-top: 0.35rem;
 }
 
 .dock-tag {
@@ -739,10 +762,10 @@ body.crt-enabled .crt-overlay {
 .hero-dock-btn {
   width: 44px;
   height: 50px;
-  background: rgba(0, 243, 255, 0.08);
+  background: rgba(0, 243, 255, 0.06);
   border: 1px solid var(--border-cyan);
   border-radius: 6px;
-  color: var(--neon-cyan);
+  color: var(--text-muted);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -754,26 +777,47 @@ body.crt-enabled .crt-overlay {
 
 .hero-dock-btn i {
   font-size: 0.95rem;
+  color: var(--text-muted);
+  transition: all 0.25s ease;
 }
 
 .dock-btn-label {
   font-size: 0.58rem;
   font-weight: 800;
   letter-spacing: 0.5px;
+  color: var(--text-muted);
+  transition: all 0.25s ease;
 }
 
 .hero-dock-btn:hover {
-  background: var(--neon-cyan);
-  color: #000000;
-  box-shadow: 0 0 15px var(--neon-cyan);
+  background: rgba(0, 243, 255, 0.2);
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 12px var(--neon-cyan);
   transform: scale(1.06);
 }
 
+.hero-dock-btn:hover i,
+.hero-dock-btn:hover .dock-btn-label {
+  color: var(--neon-cyan);
+}
+
+/* When Enabled / Active: Turn Vibrant Neon Green */
 .hero-dock-btn.active {
-  background: rgba(0, 255, 65, 0.18);
-  color: var(--neon-green);
-  border-color: var(--neon-green);
-  box-shadow: 0 0 12px rgba(0, 255, 65, 0.4);
+  background: #00ff41 !important;
+  color: #000000 !important;
+  border-color: #00ff41 !important;
+  box-shadow: 0 0 16px #00ff41, 0 0 25px rgba(0, 255, 65, 0.5) !important;
+}
+
+.hero-dock-btn.active i {
+  color: #000000 !important;
+  font-weight: 900 !important;
+}
+
+.hero-dock-btn.active .dock-btn-label {
+  color: #000000 !important;
+  font-weight: 900 !important;
 }
 
 /* Cyber HUD Avatar Card */

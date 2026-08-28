@@ -76,6 +76,7 @@
     // Matrix Toggle Button
     const matrixBtn = document.getElementById('btn-toggle-matrix');
     if (matrixBtn) {
+      matrixBtn.classList.toggle('active', matrixRunning);
       matrixBtn.addEventListener('click', () => {
         matrixRunning = !matrixRunning;
         matrixBtn.classList.toggle('active', matrixRunning);
@@ -114,14 +115,29 @@
   }
 
   function initHudControls() {
-    // CRT Overlay Toggle
+    // CRT & Laser Scanline Overlay Toggle
     const crtBtn = document.getElementById('btn-toggle-crt');
+    const crtOverlay = document.getElementById('crt-overlay');
+
     if (crtBtn) {
+      // Set initial active state based on body class
+      const initialCrt = document.body.classList.contains('crt-enabled');
+      crtBtn.classList.toggle('active', initialCrt);
+
       crtBtn.addEventListener('click', () => {
-        document.body.classList.toggle('crt-enabled');
-        const isEnabled = document.body.classList.contains('crt-enabled');
+        const isEnabled = document.body.classList.toggle('crt-enabled');
         crtBtn.classList.toggle('active', isEnabled);
-        showToast(`CRT_SCANLINES: ${isEnabled ? 'ENABLED' : 'DISABLED'}`, 'info');
+
+        if (crtOverlay) {
+          crtOverlay.style.display = isEnabled ? 'block' : 'none';
+        }
+
+        // Toggle laser lines on avatar
+        document.querySelectorAll('.hud-scanline-v, .hud-scanline-h, .hud-scanline-diag').forEach((scan) => {
+          scan.style.display = isEnabled ? 'block' : 'none';
+        });
+
+        showToast(`SCANLINES: ${isEnabled ? 'ENABLED' : 'DISABLED'}`, isEnabled ? 'success' : 'info');
         playCyberBeep(520, 0.05);
       });
     }
@@ -129,6 +145,7 @@
     // Audio FX Toggle
     const soundBtn = document.getElementById('btn-toggle-sound');
     if (soundBtn) {
+      soundBtn.classList.toggle('active', soundEnabled);
       soundBtn.addEventListener('click', () => {
         soundEnabled = !soundEnabled;
         soundBtn.classList.toggle('active', soundEnabled);
