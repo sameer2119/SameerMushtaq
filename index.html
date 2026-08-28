@@ -1,738 +1,911 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="cyber-dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sameer Mushtaq Tantray - ML Specialist, PhD Scholar & Research Scientist specializing in Machine Learning and Genomics">
-    <meta name="keywords" content="Machine Learning, Genomics, PhD Scholar, Research Scientist, Python, PyTorch">
-    <title>Sameer Mushtaq Tantray | ML Specialist & Research Scientist</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>SAMEER MUSHTAQ TANTRAY // ML SPECIALIST & RESEARCH SCIENTIST [3D GENOMICS]</title>
+  <meta name="description" content="Hacker & Bioinformatics portfolio of Sameer Mushtaq Tantray - ML Specialist, PhD Scholar at University of Kashmir, Research Scientist at CIRI Chromatin Lab." />
+  <meta name="keywords" content="Sameer Mushtaq Tantray, Bioinformatics Hacker, ML Specialist, 3D Spatial Genomics, PyTorch, HPC, Linux Kernel, CIRI, Digital Ninja" />
+  <link rel="icon" type="image/png" href="./logo.png" />
+  
+  <!-- High-Visibility Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Orbitron:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">SM<span class="accent">.</span></a>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Switch theme">
-                    <i class="fas fa-palette"></i>
-                </button>
-                <div class="theme-menu" id="theme-menu">
-                    <button class="theme-option" data-theme="light" aria-label="Light theme">
-                        <i class="fas fa-sun"></i> Light
-                    </button>
-                    <button class="theme-option" data-theme="dark" aria-label="Dark theme">
-                        <i class="fas fa-moon"></i> Dark
-                    </button>
-                    <button class="theme-option" data-theme="neon" aria-label="Neon theme">
-                        <i class="fas fa-bolt"></i> Neon
-                    </button>
-                </div>
-            </div>
-            <div class="nav-toggle">
-                <span class="hamburger"></span>
-            </div>
-        </div>
-    </nav>
+<body class="crt-enabled">
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg">
-            <div class="hero-particles" id="particles"></div>
-        </div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    Available for Research Collaborations
-                </div>
-                <h1 class="hero-title">
-                    Hi, I'm <span class="gradient-text">Sameer Mushtaq Tantray</span>
-                </h1>
-                <h2 class="hero-subtitle">
-                    ML Specialist <span class="separator">|</span> PhD Scholar <span class="separator">|</span> Research Scientist
-                </h2>
-                <p class="hero-description">
-                    Pioneering Machine Learning architectures to decode <strong>3D Spatial Genomics</strong>.
-                    Grounded in a strong core background in Machine Learning and Artificial Intelligence.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-envelope"></i> Get In Touch
-                    </a>
-                    <a href="#projects" class="btn btn-secondary">
-                        <i class="fas fa-folder-open"></i> View Projects
-                    </a>
-                </div>
-                <div class="hero-socials">
-                    <a href="https://github.com/SameerMushtaq" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/sameer-mushtaq-931068b2" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://www.facebook.com/DigitalNinjaOfficial" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/thephoenix1921" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-image-wrapper">
-                    <div class="hero-image-border"></div>
-                    <div class="hero-image">
-                        <div class="hero-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                    </div>
-                    <div class="hero-ring"></div>
-                    <div class="tech-badge badge-1">
-                        <i class="fab fa-python"></i>
-                        <span>Python</span>
-                    </div>
-                    <div class="tech-badge badge-2">
-                        <i class="fas fa-brain"></i>
-                        <span>ML/AI</span>
-                    </div>
-                    <div class="tech-badge badge-3">
-                        <i class="fas fa-dna"></i>
-                        <span>Genomics</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <a href="#about">
-                <span>Scroll Down</span>
-                <i class="fas fa-chevron-down"></i>
+  <!-- Live Matrix Canvas Background -->
+  <canvas id="matrix-canvas" class="matrix-canvas"></canvas>
+  <div class="crt-overlay" id="crt-overlay"></div>
+  <div class="cyber-grid-bg"></div>
+
+  <!-- Top Real-Time Telemetry HUD Bar -->
+  <header class="telemetry-bar">
+    <div class="telemetry-inner">
+      <div class="telemetry-item live-pulse">
+        <span class="hud-dot green"></span>
+        <span class="hud-label">NODE:</span>
+        <span class="hud-val">CIRI-HPC-CLUSTER</span>
+      </div>
+      <div class="telemetry-item">
+        <span class="hud-label">KERNEL:</span>
+        <span class="hud-val">LINUX-6.8.0-GENOMICS</span>
+      </div>
+      <div class="telemetry-item hide-mobile">
+        <span class="hud-label">PIPELINE:</span>
+        <span class="hud-val text-cyan">3D-HI-C-PREDICTOR [v2.4]</span>
+      </div>
+      <div class="telemetry-item hide-mobile">
+        <span class="hud-label">STATUS:</span>
+        <span class="hud-val text-green">100% OPERATIONAL</span>
+      </div>
+      <div class="telemetry-item right-align">
+        <span class="hud-label">SYS_TIME:</span>
+        <span class="hud-val text-green" id="sys-clock">00:00:00 UTC</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Cyber Navigation HUD -->
+  <nav class="cyber-navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="cyber-logo">
+        <img src="./logo.png" alt="Digital Ninja Logo" class="nav-logo-img" />
+        <span class="logo-bracket">[</span><span class="text-cyan">DN</span><span class="logo-sep">::</span><span class="text-green">SAMEER</span><span class="logo-bracket">]</span>
+      </a>
+
+      <div class="cyber-nav-links" id="nav-links">
+        <a href="#home" class="nav-link active"><span class="nav-num">01.</span>//HOME</a>
+        <a href="#terminal-section" class="nav-link"><span class="nav-num">02.</span>//CLI_TERM</a>
+        <a href="#profile" class="nav-link"><span class="nav-num">03.</span>//BIO_SYS</a>
+        <a href="#expertise" class="nav-link"><span class="nav-num">04.</span>//TECH_STACK</a>
+        <a href="#services" class="nav-link"><span class="nav-num">05.</span>//SERVICES</a>
+        <a href="#projects" class="nav-link"><span class="nav-num">06.</span>//PROJECTS</a>
+        <a href="#interests" class="nav-link"><span class="nav-num">07.</span>//INTERESTS</a>
+        <a href="#contact" class="nav-link"><span class="nav-num">08.</span>//TRANSMIT</a>
+      </div>
+
+      <div class="hud-controls">
+        <!-- Matrix Rain Toggle -->
+        <button class="hud-btn" id="btn-toggle-matrix" title="Toggle Matrix Stream" aria-label="Toggle Matrix Rain">
+          <i class="fas fa-terminal"></i>
+          <span class="btn-tooltip">MATRIX_STREAM</span>
+        </button>
+        
+        <!-- CRT Scanline Toggle -->
+        <button class="hud-btn" id="btn-toggle-crt" title="Toggle CRT Screen Glow" aria-label="Toggle CRT Scanlines">
+          <i class="fas fa-tv"></i>
+          <span class="btn-tooltip">CRT_SCANLINES</span>
+        </button>
+
+        <!-- Audio FX Toggle -->
+        <button class="hud-btn" id="btn-toggle-sound" title="Toggle Cyber Audio FX" aria-label="Toggle Audio Effects">
+          <i class="fas fa-volume-high"></i>
+          <span class="btn-tooltip">AUDIO_SYNTH</span>
+        </button>
+
+        <!-- Download CV -->
+        <a href="./CV_Sameer.pdf" download="CV_Sameer.pdf" class="hud-btn hud-btn-cv" title="Download CV ($ wget ./CV_Sameer.pdf)">
+          <i class="fas fa-file-code"></i>
+          <span>WGET_CV.PDF</span>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Navigation Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+
+    <!-- Hero Section (Bioinformatics HUD Interface) -->
+    <section id="home" class="hero-section">
+      <div class="hero-grid">
+        
+        <!-- Left Column: Terminal Prompt & Identity -->
+        <div class="hero-left">
+          <div class="sys-badge-container">
+            <span class="sys-badge-dot"></span>
+            <span class="sys-badge-text">STATUS: ACTIVE RESEARCH SCIENTIST & PhD SCHOLAR</span>
+          </div>
+
+          <div class="glitch-title-wrap">
+            <h1 class="hero-name glitch" data-text="SAMEER MUSHTAQ TANTRAY">
+              SAMEER MUSHTAQ <br><span class="text-gradient-cyan">TANTRAY</span>
+            </h1>
+          </div>
+
+          <div class="terminal-command-line">
+            <span class="prompt-user">sameer@ciri-cluster</span><span class="prompt-sep">:</span><span class="prompt-path">~/genomics</span><span class="prompt-char">$</span>
+            <span class="typing-target" id="hero-typing-target">python run_pipeline.py --mode "3D_Spatial_Genomics"</span>
+            <span class="terminal-cursor">_</span>
+          </div>
+
+          <p class="hero-bio-lead">
+            Pioneering cutting-edge <strong>Machine Learning & Graph Neural Architectures</strong> to decode <strong>3D Spatial Genomics</strong> and high-order chromatin topology. Operating at the convergence of AI, computational biology, HPC cluster orchestration, and resilient systems engineering.
+          </p>
+
+          <!-- Quick Cyber Action Buttons -->
+          <div class="hero-actions">
+            <a href="#contact" class="cyber-btn cyber-btn-primary">
+              <span class="btn-bracket">[</span>
+              <i class="fas fa-paper-plane"></i>
+              <span>INITIATE_CONTACT</span>
+              <span class="btn-bracket">]</span>
             </a>
+            <a href="#projects" class="cyber-btn cyber-btn-secondary">
+              <span class="btn-bracket">[</span>
+              <i class="fas fa-code-fork"></i>
+              <span>VIEW_DEPLOYMENTS</span>
+              <span class="btn-bracket">]</span>
+            </a>
+            <a href="./CV_Sameer.pdf" download="CV_Sameer.pdf" class="cyber-btn cyber-btn-ghost">
+              <span class="btn-bracket">[</span>
+              <i class="fas fa-download"></i>
+              <span>DOWNLOAD_CV</span>
+              <span class="btn-bracket">]</span>
+            </a>
+          </div>
+
+          <!-- All Transmission Channels -->
+          <div class="hero-socials-bar">
+            <span class="social-label">//ALL_TRANSMISSION_CHANNELS:</span>
+            <div class="social-badges">
+              <a href="mailto:Sameermushtaq48@gmail.com" class="cyber-social-chip" title="Email: Sameermushtaq48@gmail.com">
+                <i class="fas fa-envelope text-cyan"></i> <span>EMAIL</span>
+              </a>
+              <a href="https://wa.me/917006249954" target="_blank" rel="noopener noreferrer" class="cyber-social-chip" title="WhatsApp: +91 7006249954">
+                <i class="fab fa-whatsapp text-green"></i> <span>WHATSAPP</span>
+              </a>
+              <a href="https://github.com/SameerMushtaq" target="_blank" rel="noopener noreferrer" class="cyber-social-chip" title="GitHub">
+                <i class="fab fa-github"></i> <span>GITHUB</span>
+              </a>
+              <a href="https://www.linkedin.com/in/sameer-mushtaq-931068b2/" target="_blank" rel="noopener noreferrer" class="cyber-social-chip" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i> <span>LINKEDIN</span>
+              </a>
+              <a href="https://t.me/Sameer1921" target="_blank" rel="noopener noreferrer" class="cyber-social-chip" title="Telegram">
+                <i class="fab fa-telegram-plane text-cyan"></i> <span>TELEGRAM</span>
+              </a>
+              <a href="https://www.instagram.com/thephoenix1921/" target="_blank" rel="noopener noreferrer" class="cyber-social-chip" title="Instagram">
+                <i class="fab fa-instagram"></i> <span>INSTAGRAM</span>
+              </a>
+              <a href="https://www.facebook.com/DigitalNinjaOfficial/" target="_blank" rel="noopener noreferrer" class="cyber-social-chip" title="Facebook">
+                <i class="fab fa-facebook-f"></i> <span>FACEBOOK</span>
+              </a>
+            </div>
+          </div>
         </div>
+
+        <!-- Right Column: Cyber HUD Avatar Card with 3-Way Laser Scan -->
+        <div class="hero-right">
+          <div class="hud-card">
+            <!-- HUD Bracket Corners -->
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+
+            <div class="hud-header">
+              <span class="hud-dot red"></span>
+              <span class="hud-dot yellow"></span>
+              <span class="hud-dot green"></span>
+              <span class="hud-title">SUBJECT_ID: SAMEER_TANTRAY // PhD_SCHOLAR</span>
+            </div>
+
+            <div class="hud-image-container">
+              <img src="./DP.png" alt="Sameer Mushtaq Tantray" class="hud-photo" onerror="this.src='./logo.png';" />
+              
+              <!-- 3-Way Multi-Directional Slow Scanners (Top-to-Bottom, Left-to-Right, Diagonal) -->
+              <div class="hud-scanline-v" title="Vertical Laser Scan"></div>
+              <div class="hud-scanline-h" title="Horizontal Laser Scan"></div>
+              <div class="hud-scanline-diag" title="Diagonal Laser Scan"></div>
+              <div class="hud-target-reticle"></div>
+
+              <div class="hud-overlay-text">
+                <span class="overlay-tag">LOC: KASHMIR, INDIA</span>
+                <span class="overlay-tag">INST: UNIV_OF_KASHMIR</span>
+              </div>
+            </div>
+
+            <div class="hud-telemetry-stats">
+              <div class="hud-stat-cell">
+                <span class="stat-meta">RESEARCH DOMAIN</span>
+                <span class="stat-val text-cyan">3D SPATIAL GENOMICS</span>
+              </div>
+              <div class="hud-stat-cell">
+                <span class="stat-meta">CORE DISCIPLINE</span>
+                <span class="stat-val text-green">MACHINE LEARNING / AI</span>
+              </div>
+              <div class="hud-stat-cell">
+                <span class="stat-meta">LAB AFFILIATION</span>
+                <span class="stat-val text-cyan">CIRI CHROMATIN LAB</span>
+              </div>
+              <div class="hud-stat-cell">
+                <span class="stat-meta">SYSTEM STATUS</span>
+                <span class="stat-val text-green">ACTIVE & COLLABORATIVE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Affiliations & Collaborations HUD Bar -->
+      <div class="affiliations-hud">
+        <div class="affil-group">
+          <span class="affil-title"><i class="fas fa-building-columns"></i> ACADEMIC AFFILIATIONS:</span>
+          <div class="affil-chips">
+            <span class="affil-chip">University of Kashmir</span>
+            <span class="affil-chip">CIRI Chromatin Lab</span>
+            <span class="affil-chip">IUST</span>
+            <span class="affil-chip">MMIE</span>
+          </div>
+        </div>
+
+        <div class="affil-group">
+          <span class="affil-title"><i class="fas fa-network-wired"></i> RESEARCH COLLABORATIONS:</span>
+          <div class="affil-chips">
+            <span class="affil-chip collab">IISER Pune</span>
+            <span class="affil-chip collab">IISER TVM</span>
+            <span class="affil-chip collab">IIIT Delhi</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Get To Know</span>
-                <h2 class="section-title">About Me</h2>
-            </div>
-            <div class="about-grid">
-                <div class="about-content">
-                    <p class="about-lead">
-                        I'm a passionate PhD Scholar at the <strong>University of Kashmir</strong>, focused on leveraging
-                        Machine Learning to decode the complexities of 3D Spatial Genomics.
-                    </p>
-                    <p class="about-text">
-                        My research sits at the intersection of computational biology and deep learning, where I develop
-                        novel architectures to analyze genomic data structures. With a solid foundation in both theoretical
-                        ML principles and practical implementation, I strive to push the boundaries of what's possible in
-                        biological data analysis.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="2">0</span>
-                            <span class="stat-label">Major Projects</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">PhD</span>
-                            <span class="stat-label">In Progress</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">3+</span>
-                            <span class="stat-label">Years Research</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-education">
-                    <h3 class="education-title">
-                        <i class="fas fa-graduation-cap"></i>
-                        Education
-                    </h3>
-                    <div class="education-list">
-                        <div class="education-item">
-                            <div class="education-icon">
-                                <i class="fas fa-university"></i>
-                            </div>
-                            <div class="education-content">
-                                <h4>PhD in Computer Science</h4>
-                                <p>University of Kashmir</p>
-                                <span class="education-status">In Progress</span>
-                            </div>
-                        </div>
-                        <div class="education-item">
-                            <div class="education-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <div class="education-content">
-                                <h4>MCA</h4>
-                                <p>Islamic University of Science & Technology</p>
-                            </div>
-                        </div>
-                        <div class="education-item">
-                            <div class="education-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <div class="education-content">
-                                <h4>B.Sc Computer Science</h4>
-                                <p>University of Kashmir</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="certifications">
-                        <h3 class="cert-title">
-                            <i class="fas fa-award"></i>
-                            Certifications
-                        </h3>
-                        <div class="cert-list">
-                            <span class="cert-badge">CCCA-NIELIT</span>
-                            <span class="cert-badge">Field Tech-PMKVY</span>
-                            <span class="cert-badge">CCTV Tech-PMKVY</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Interactive Real-Time Hacker Terminal (Interactive CLI Component) -->
+    <section id="terminal-section" class="section">
+      <div class="section-title-wrap">
+        <span class="section-tag">[ INTERACTIVE_CONSOLE ]</span>
+        <h2 class="section-heading"><span class="text-green">>_</span> Live Bio-Terminal Console</h2>
+        <p class="section-sub">Type commands into the shell below or click the quick execution buttons.</p>
+      </div>
+
+      <div class="cyber-terminal-card">
+        <div class="term-header">
+          <div class="term-controls">
+            <span class="term-btn close"></span>
+            <span class="term-btn min"></span>
+            <span class="term-btn max"></span>
+          </div>
+          <span class="term-title">sameer@research-node-01: ~ (bash - 80x24)</span>
+          <span class="term-badge">LIVE_CLI</span>
         </div>
+
+        <div class="term-body" id="term-output">
+          <div class="term-line banner-line">
+================================================================================
+  SAMEER MUSHTAQ TANTRAY - BIOINFORMATICS & ML INTELLIGENCE TERMINAL v4.2
+  Type 'help' for command directory | Click quick command buttons below
+================================================================================
+          </div>
+          <div class="term-line text-cyan">System loaded successfully. All genomic models initialized.</div>
+        </div>
+
+        <!-- Terminal Quick Action Command Buttons -->
+        <div class="term-quick-bar">
+          <span class="quick-title">QUICK EXEC:</span>
+          <button class="cmd-pill" onclick="executeTermCommand('help')">help</button>
+          <button class="cmd-pill" onclick="executeTermCommand('cat profile.txt')">cat profile.txt</button>
+          <button class="cmd-pill" onclick="executeTermCommand('tree skills')">tree skills</button>
+          <button class="cmd-pill" onclick="executeTermCommand('ls services')">ls services</button>
+          <button class="cmd-pill" onclick="executeTermCommand('cat projects.json')">cat projects.json</button>
+          <button class="cmd-pill" onclick="executeTermCommand('status --cluster')">status --cluster</button>
+          <button class="cmd-pill" onclick="executeTermCommand('contact')">contact</button>
+          <button class="cmd-pill" onclick="executeTermCommand('clear')">clear</button>
+        </div>
+
+        <!-- Terminal Input Row -->
+        <div class="term-input-row">
+          <span class="term-prompt-label">sameer@research-node:~$</span>
+          <input type="text" class="term-input-field" id="terminal-input" placeholder="type a command (e.g. 'help', 'skills', 'projects', 'contact', 'wget cv')..." autocomplete="off" spellcheck="false" />
+          <button class="term-run-btn" id="term-run-btn"><i class="fas fa-play"></i> RUN</button>
+        </div>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">What I Know</span>
-                <h2 class="section-title">Skills & Technologies</h2>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <h3>Machine Learning & AI</h3>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fab fa-python"></i>
-                                <span>Python</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fas fa-fire"></i>
-                                <span>PyTorch</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fas fa-tensor-flow"></i>
-                                <span>TensorFlow</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fas fa-brain"></i>
-                                <span>Deep Learning</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3>Infrastructure & Systems</h3>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fab fa-linux"></i>
-                                <span>Linux / HPC</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fas fa-microchip"></i>
-                                <span>GPU Acceleration</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fas fa-cogs"></i>
-                                <span>C / C++</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="75"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3>Web & Development</h3>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fab fa-react"></i>
-                                <span>React / Next.js</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fab fa-node-js"></i>
-                                <span>Node.js</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="75"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <i class="fas fa-database"></i>
-                                <span>MongoDB / SQL</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="78"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="skills-pills">
-                <span class="skill-pill">Machine Learning</span>
-                <span class="skill-pill">Deep Learning</span>
-                <span class="skill-pill">Genomics</span>
-                <span class="skill-pill">Data Visualization</span>
-                <span class="skill-pill">AI Pipeline Engineering</span>
-                <span class="skill-pill">System Recovery</span>
-                <span class="skill-pill">Kernel Diagnostics</span>
-                <span class="skill-pill">AWS</span>
-                <span class="skill-pill">Docker</span>
-            </div>
+    <!-- Profile & Strategic Objectives (System Files) -->
+    <section id="profile" class="section">
+      <div class="section-title-wrap">
+        <span class="section-tag">[ DECODED_SYSTEM_FILES ]</span>
+        <h2 class="section-heading"><span class="text-cyan">//</span> Profile & Strategic Objectives</h2>
+        <p class="section-sub">Comprehensive overview of academic trajectory, algorithmic competencies, and research mission.</p>
+      </div>
+
+      <div class="cyber-two-grid">
+        <!-- Professional Summary -->
+        <div class="cyber-panel">
+          <div class="panel-header">
+            <i class="fas fa-file-lines text-cyan"></i>
+            <span class="panel-filename">/var/log/professional_summary.md</span>
+            <span class="panel-badge green">VERIFIED</span>
+          </div>
+          <div class="panel-body">
+            <h3 class="panel-title">Professional Summary & Trajectory</h3>
+            <p class="panel-text">
+              My scientific trajectory is rooted in the resilience of Kashmir, advancing from foundational schooling to graduation in Bijbehara, completing my MCA at the <strong>Islamic University of Science and Technology (IUST)</strong>, and now pursuing a PhD in Computer Science at the <strong>University of Kashmir</strong>.
+            </p>
+            <p class="panel-text">
+              Grounded in a strong core background in <strong>Machine Learning and Artificial Intelligence</strong>, I apply deep learning architectures, graph neural networks (GNNs), and pattern recognition systems to solve complex biological questions. Currently serving as a <strong>Project Research Scientist at the Chromatin and Epigenetics Lab (CIRI)</strong>, I develop AI-driven pipelines to decipher high-order 3D spatial genomics and chromatin interactions. Alongside algorithmic expertise, I bring elite systems-engineering competencies, including root-level kernel debugging, lossless system and storage recovery, HPC cluster management, and scalable enterprise application deployment.
+            </p>
+          </div>
         </div>
+
+        <!-- Strategic Objective -->
+        <div class="cyber-panel">
+          <div class="panel-header">
+            <i class="fas fa-crosshairs text-green"></i>
+            <span class="panel-filename">/etc/strategic_mission.conf</span>
+            <span class="panel-badge cyan">MISSION</span>
+          </div>
+          <div class="panel-body">
+            <h3 class="panel-title">Strategic Research Objective</h3>
+            <p class="panel-text">
+              My objective is to advance state-of-the-art <strong>Machine Learning frameworks</strong> specifically engineered for multi-dimensional biological datasets and 3D spatial genomics. Through my doctoral research at the University of Kashmir, I focus on constructing self-supervised and predictive AI models to uncover hidden chromatin conformation states, topologically associating domains (TADs), and gene regulation dynamics.
+            </p>
+            <p class="panel-text">
+              I aim to deliver open-source ML pipelines, high-fidelity neural network simulations, and high-performance interactive tools that convert high-throughput genomic data into actionable biological insights, bridging Computer Science and Life Sciences.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">What I Offer</span>
-                <h2 class="section-title">My Services</h2>
-                <p class="section-subtitle">Professional services spanning research, software engineering, and design — tailored to academic and industry needs.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-dna"></i>
-                    </div>
-                    <h3 class="service-title">ML & Genomic Analysis</h3>
-                    <p class="service-description">
-                        AI-driven pipelines for 3D genomics, Hi-C/Micro-C data modeling, and predictive chromatin analysis.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> 3D Genomics Pipelines</li>
-                        <li><i class="fas fa-check-circle"></i> Hi-C/Micro-C Modeling</li>
-                        <li><i class="fas fa-check-circle"></i> Chromatin Analysis</li>
-                        <li><i class="fas fa-check-circle"></i> Predictive AI Models</li>
-                    </ul>
-                    <a href="#contact" class="service-link">
-                        Check Here <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3 class="service-title">System Technician</h3>
-                    <p class="service-description">
-                        OS installation, recovery, activation, kernel tuning, and advanced hardware troubleshooting.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> OS Installation & Recovery</li>
-                        <li><i class="fas fa-check-circle"></i> Kernel Tuning</li>
-                        <li><i class="fas fa-check-circle"></i> Hardware Troubleshooting</li>
-                        <li><i class="fas fa-check-circle"></i> System Activation</li>
-                    </ul>
-                    <a href="#contact" class="service-link">
-                        Check Here <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3 class="service-title">Software Engineering</h3>
-                    <p class="service-description">
-                        Toolchain setup, environment configuration, patched utilities, and high-performance software builds.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Toolchain Setup</li>
-                        <li><i class="fas fa-check-circle"></i> Environment Configuration</li>
-                        <li><i class="fas fa-check-circle"></i> Patched Utilities</li>
-                        <li><i class="fas fa-check-circle"></i> High-Performance Builds</li>
-                    </ul>
-                    <a href="#contact" class="service-link">
-                        Check Here <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3 class="service-title">Web Development & Deployment</h3>
-                    <p class="service-description">
-                        Academic dashboards, web-based genomic visualizers, full-stack portals, and production deployment.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Academic Dashboards</li>
-                        <li><i class="fas fa-check-circle"></i> Genomic Visualizers</li>
-                        <li><i class="fas fa-check-circle"></i> Full-Stack Portals</li>
-                        <li><i class="fas fa-check-circle"></i> Production Deployment</li>
-                    </ul>
-                    <a href="#contact" class="service-link">
-                        Check Here <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3 class="service-title">Graphics Designing</h3>
-                    <p class="service-description">
-                        Scientific figures, publication posters, banners, presentations, and vector illustrations.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Scientific Figures</li>
-                        <li><i class="fas fa-check-circle"></i> Publication Posters</li>
-                        <li><i class="fas fa-check-circle"></i> Banners & Presentations</li>
-                        <li><i class="fas fa-check-circle"></i> Vector Illustrations</li>
-                    </ul>
-                    <a href="#contact" class="service-link">
-                        Check Here <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h3 class="service-title">Office Automation</h3>
-                    <p class="service-description">
-                        Automated reporting, advanced data spreadsheets, reference formatting, and LaTeX documentation.
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Automated Reporting</li>
-                        <li><i class="fas fa-check-circle"></i> Data Spreadsheets</li>
-                        <li><i class="fas fa-check-circle"></i> Reference Formatting</li>
-                        <li><i class="fas fa-check-circle"></i> LaTeX Documentation</li>
-                    </ul>
-                    <a href="#contact" class="service-link">
-                        Check Here <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
+    <!-- Technical Stack & 10 Core Disciplines -->
+    <section id="expertise" class="section">
+      <div class="section-title-wrap">
+        <span class="section-tag">[ CORE_CAPABILITIES ]</span>
+        <h2 class="section-heading"><span class="text-green">//</span> Technical Stack & 10 Core Disciplines</h2>
+        <p class="section-sub">Comprehensive inventory of computational biology, machine learning, systems, and full-stack capabilities.</p>
+      </div>
+
+      <!-- 10 Core Disciplines Cyber Hex Matrix -->
+      <div class="disciplines-grid">
+        <div class="disc-box">
+          <span class="disc-icon">🧠</span>
+          <span class="disc-name">Machine Learning</span>
+          <span class="disc-meta">PyTorch · GATs · CNNs</span>
         </div>
+        <div class="disc-box">
+          <span class="disc-icon">🤖</span>
+          <span class="disc-name">Artificial Intelligence</span>
+          <span class="disc-meta">Predictive Modeling</span>
+        </div>
+        <div class="disc-box">
+          <span class="disc-icon">🧬</span>
+          <span class="disc-name">Bioinformatics</span>
+          <span class="disc-meta">Sequence Analysis</span>
+        </div>
+        <div class="disc-box">
+          <span class="disc-icon">🔬</span>
+          <span class="disc-name">Genomics</span>
+          <span class="disc-meta">3D Hi-C / Micro-C</span>
+        </div>
+        <div class="disc-box">
+          <span class="disc-icon">🧪</span>
+          <span class="disc-name">Epigenomics</span>
+          <span class="disc-meta">Chromatin Loops</span>
+        </div>
+        <div class="disc-box">
+          <span class="disc-icon">🔄</span>
+          <span class="disc-name">Bio-Pipelines</span>
+          <span class="disc-meta">Cool · Mcool · Pairs</span>
+        </div>
+        <div class="disc-box">
+          <span class="disc-icon">💻</span>
+          <span class="disc-name">HPC & Linux</span>
+          <span class="disc-meta">SLURM · CUDA Clusters</span>
+        </div>
+        <div class="disc-box">
+          <span class="disc-icon">🌐</span>
+          <span class="disc-name">Web Development</span>
+          <span class="disc-meta">Next.js · React · APIs</span>
+        </div>
+        <div class="disc-box">
+          <span class="disc-icon">⌨️</span>
+          <span class="disc-name">Programming</span>
+          <span class="disc-meta">Python · C++ · SQL</span>
+        </div>
+        <div class="disc-box">
+          <span class="disc-icon">🛠️</span>
+          <span class="disc-name">System Technician</span>
+          <span class="disc-meta">Recovery · Kernel Tuning</span>
+        </div>
+      </div>
+
+      <div class="cyber-two-grid mt-4">
+        <!-- Academic Timeline Card -->
+        <div class="cyber-panel">
+          <div class="panel-header">
+            <i class="fas fa-graduation-cap text-cyan"></i>
+            <span class="panel-filename">~/academic_timeline.log</span>
+          </div>
+          <div class="panel-body">
+            <div class="cyber-timeline">
+              <div class="timeline-node">
+                <span class="node-marker"></span>
+                <div class="node-content">
+                  <h4 class="node-title">PhD in Computer Science (ML & Genomics)</h4>
+                  <span class="node-inst text-cyan">University of Kashmir | [ACTIVE RESEARCH]</span>
+                  <p class="node-desc">Focus: Machine Learning for 3D Spatial Chromatin Modeling & Predictive Contact Matrices.</p>
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <span class="node-marker"></span>
+                <div class="node-content">
+                  <h4 class="node-title">Master of Computer Applications (MCA)</h4>
+                  <span class="node-inst text-green">Islamic University of Science & Technology (IUST)</span>
+                  <p class="node-desc">Advanced Algorithms, Distributed Systems, Database Architecture & Software Engineering.</p>
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <span class="node-marker"></span>
+                <div class="node-content">
+                  <h4 class="node-title">B.Sc. in Computer Science</h4>
+                  <span class="node-inst text-cyan">University of Kashmir (Bijbehara)</span>
+                  <p class="node-desc">Core Computer Science, Mathematics & System Engineering Foundations.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certifications Pill Row -->
+            <div class="certifications-box">
+              <span class="cert-title">//OFFICIAL_CERTIFICATIONS:</span>
+              <div class="cert-chips-wrap">
+                <span class="cert-pill"><i class="fas fa-shield-halved"></i> CCCA - NIELIT</span>
+                <span class="cert-pill"><i class="fas fa-tools"></i> Field Tech - PMKVY</span>
+                <span class="cert-pill"><i class="fas fa-video"></i> CCTV Tech - PMKVY</span>
+                <span class="cert-pill"><i class="fas fa-server"></i> HPC Cluster Admin</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Research & Systems Competencies -->
+        <div class="cyber-panel">
+          <div class="panel-header">
+            <i class="fas fa-dna text-green"></i>
+            <span class="panel-filename">~/research_and_systems.json</span>
+          </div>
+          <div class="panel-body">
+            <h4 class="subpanel-title"><i class="fas fa-atom text-cyan"></i> Research Domains</h4>
+            <ul class="cyber-checklist">
+              <li><i class="fas fa-check text-green"></i> Machine Learning & Deep Learning Architectures (GATs, CNNs, Transformers)</li>
+              <li><i class="fas fa-check text-green"></i> 3D Spatial Genomics, Chromatin Conformation & TAD Prediction</li>
+              <li><i class="fas fa-check text-green"></i> Predictive AI & Neural Modeling in Computational Biology</li>
+              <li><i class="fas fa-check text-green"></i> High-Dimensional Multi-Omics Data Processing & Variant Annotation</li>
+            </ul>
+
+            <h4 class="subpanel-title mt-3"><i class="fas fa-server text-cyan"></i> Systems & Infrastructure</h4>
+            <ul class="cyber-checklist">
+              <li><i class="fas fa-check text-green"></i> HPC Cluster Management, SLURM Queues & GPU/CUDA Acceleration</li>
+              <li><i class="fas fa-check text-green"></i> Complex Biological Data Visualization & Canvas Rendering</li>
+              <li><i class="fas fa-check text-green"></i> Data Integrity, Deep Disk Diagnostics & Lossless Recovery</li>
+              <li><i class="fas fa-check text-green"></i> Kernel Diagnostics, Low-Level Troubleshooting & OS Optimization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Services Catalog (With Interactive Modals) -->
+    <section id="services" class="section">
+      <div class="section-title-wrap">
+        <span class="section-tag">[ CONSULTING_&_SOLUTIONS ]</span>
+        <h2 class="section-heading"><span class="text-cyan">//</span> Services Catalog</h2>
+        <p class="section-sub">Click any service card to view complete specifications and capability breakdowns.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card" onclick="showServiceModal('genomics')">
+          <div class="card-corner-bracket"></div>
+          <div class="service-icon-box cyan">
+            <i class="fas fa-dna"></i>
+          </div>
+          <h3 class="service-name">ML & Genomic Analysis</h3>
+          <p class="service-desc">AI-driven predictive pipelines for 3D spatial genomics, Hi-C/Micro-C chromatin modeling, and custom deep learning architectures.</p>
+          <div class="service-card-footer">
+            <span class="btn-inspect"><i class="fas fa-terminal"></i> [INSPECT_9_ITEMS]</span>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card" onclick="showServiceModal('system')">
+          <div class="card-corner-bracket"></div>
+          <div class="service-icon-box green">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3 class="service-name">System Technician</h3>
+          <p class="service-desc">OS installation, recovery, activation, kernel tuning, HPC cluster configuration, and advanced hardware diagnostics.</p>
+          <div class="service-card-footer">
+            <span class="btn-inspect"><i class="fas fa-terminal"></i> [INSPECT_6_ITEMS]</span>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card" onclick="showServiceModal('software')">
+          <div class="card-corner-bracket"></div>
+          <div class="service-icon-box magenta">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3 class="service-name">Software Engineering</h3>
+          <p class="service-desc">Toolchain setup, environment configuration, patched utilities, parallel compute jobs, and high-performance software builds.</p>
+          <div class="service-card-footer">
+            <span class="btn-inspect"><i class="fas fa-terminal"></i> [INSPECT_6_ITEMS]</span>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card" onclick="showServiceModal('web')">
+          <div class="card-corner-bracket"></div>
+          <div class="service-icon-box cyan">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3 class="service-name">Web Development & Cloud</h3>
+          <p class="service-desc">Academic dashboards, web-based genomic visualizers, full-stack portals, database architectures, and production deployment.</p>
+          <div class="service-card-footer">
+            <span class="btn-inspect"><i class="fas fa-terminal"></i> [INSPECT_6_ITEMS]</span>
+          </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-card" onclick="showServiceModal('graphics')">
+          <div class="card-corner-bracket"></div>
+          <div class="service-icon-box green">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3 class="service-name">Graphics Designing</h3>
+          <p class="service-desc">Publication figures, scientific vector illustrations, conference posters, high-resolution banners, and slide decks.</p>
+          <div class="service-card-footer">
+            <span class="btn-inspect"><i class="fas fa-terminal"></i> [INSPECT_5_ITEMS]</span>
+          </div>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-card" onclick="showServiceModal('office')">
+          <div class="card-corner-bracket"></div>
+          <div class="service-icon-box magenta">
+            <i class="fas fa-file-lines"></i>
+          </div>
+          <h3 class="service-name">Office Automation</h3>
+          <p class="service-desc">Automated reporting scripts, high-volume statistical spreadsheets, LaTeX document preparation, and database querying.</p>
+          <div class="service-card-footer">
+            <span class="btn-inspect"><i class="fas fa-terminal"></i> [INSPECT_5_ITEMS]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Deployments & Projects -->
     <section id="projects" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">My Work</span>
-                <h2 class="section-title">Featured Projects</h2>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-visual">
-                        <div class="project-icon">
-                            <i class="fas fa-dna"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Next.js</span>
-                            <span class="project-tag">TailwindCSS</span>
-                            <span class="project-tag">ResearchInfra</span>
-                        </div>
-                        <h3 class="project-title">Instrument Bookings System - CIRI</h3>
-                        <p class="project-description">
-                            Lead Developer & System Architect for the Chromatin and Epigenetics Lab (CIRI).
-                            Built a comprehensive scheduling engine for research instrument bookings with
-                            automated data analytics and enterprise-grade architecture.
-                        </p>
-                        <div class="project-footer">
-                            <span class="project-role">
-                                <i class="fas fa-user-tie"></i>
-                                Lead Developer & System Architect
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-visual">
-                        <div class="project-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">DatabaseArchitecture</span>
-                            <span class="project-tag">Automation</span>
-                            <span class="project-tag">Enterprise</span>
-                        </div>
-                        <h3 class="project-title">Placement Management System - IUST</h3>
-                        <p class="project-description">
-                            Lead Developer & System Architect for Islamic University of Science & Technology.
-                            Designed database architecture and implemented automation workflows for
-                            campus placement operations with advanced data analytics.
-                        </p>
-                        <div class="project-footer">
-                            <span class="project-role">
-                                <i class="fas fa-user-tie"></i>
-                                Lead Developer & System Architect
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="section-title-wrap between">
+        <div>
+          <span class="section-tag">[ ACTIVE_DEPLOYMENTS ]</span>
+          <h2 class="section-heading"><span class="text-green">>_</span> Featured Projects</h2>
         </div>
+        <a href="https://github.com/SameerMushtaq" target="_blank" rel="noopener noreferrer" class="cyber-btn cyber-btn-ghost">
+          <i class="fab fa-github"></i> <span>VIEW_ALL_REPOS</span>
+        </a>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-cyber-card">
+          <div class="project-cyber-header">
+            <span class="proj-badge text-cyan">ENTERPRISE_RESEARCH_INFRA</span>
+            <a href="https://ablabinstruments.vercel.app" target="_blank" rel="noopener noreferrer" class="proj-live-link">
+              <span>LAUNCH_APP</span> <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          <h3 class="proj-title">Instrument Bookings System - CIRI</h3>
+          <p class="proj-desc">
+            A centralized platform engineered for the <strong>Chromatin and Epigenetics Lab (CIRI)</strong> to manage laboratory instrument scheduling. Streamlines access protocols, tracks utilization metrics, and maintains transparent allocation for mission-critical scientific hardware.
+          </p>
+          <div class="proj-role-tag">
+            <i class="fas fa-user-gear text-green"></i> <span>Lead Developer & System Architect</span>
+          </div>
+          <div class="proj-chips-row">
+            <span class="proj-chip">#Next.js</span>
+            <span class="proj-chip">#TailwindCSS</span>
+            <span class="proj-chip">#SchedulerEngine</span>
+            <span class="proj-chip">#ResearchInfra</span>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-cyber-card">
+          <div class="project-cyber-header">
+            <span class="proj-badge text-green">INSTITUTIONAL_PORTAL</span>
+            <span class="proj-internal-badge"><i class="fas fa-lock"></i> INTERNAL_PORTAL</span>
+          </div>
+          <h3 class="proj-title">Placement Management System - IUST</h3>
+          <p class="proj-desc">
+            An institutional portal developed for the <strong>Islamic University of Science & Technology</strong> to automate university-wide recruitment drives. Features dynamic profile matching, automated transcript validation, and comprehensive predictive placement statistics.
+          </p>
+          <div class="proj-role-tag">
+            <i class="fas fa-user-gear text-green"></i> <span>Lead Developer & System Architect</span>
+          </div>
+          <div class="proj-chips-row">
+            <span class="proj-chip">#DatabaseArchitecture</span>
+            <span class="proj-chip">#Automation</span>
+            <span class="proj-chip">#DataAnalytics</span>
+            <span class="proj-chip">#Enterprise</span>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-cyber-card">
+          <div class="project-cyber-header">
+            <span class="proj-badge text-magenta">D2C_COMMERCE_PLATFORM</span>
+            <a href="https://f2sportsstore.vercel.app" target="_blank" rel="noopener noreferrer" class="proj-live-link">
+              <span>LAUNCH_STORE</span> <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          <h3 class="proj-title">F2 Sports — E-Commerce Store</h3>
+          <p class="proj-desc">
+            A bespoke Direct-to-Consumer (D2C) e-commerce storefront for handcrafted Kashmir & English willow cricket blades. Engineered with dynamic custom-bat configuration, seamless real-time cart checkout, WhatsApp commerce integration, and pan-India express fulfillment logistics.
+          </p>
+          <div class="proj-role-tag">
+            <i class="fas fa-user-gear text-green"></i> <span>Full-Stack & E-Commerce Architect</span>
+          </div>
+          <div class="proj-chips-row">
+            <span class="proj-chip">#Next.js</span>
+            <span class="proj-chip">#TailwindCSS</span>
+            <span class="proj-chip">#D2CCommerce</span>
+            <span class="proj-chip">#CustomConfigurator</span>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-cyber-card">
+          <div class="project-cyber-header">
+            <span class="proj-badge text-cyan">DEEP_LEARNING_PIPELINE</span>
+            <a href="https://github.com/SameerMushtaq" target="_blank" rel="noopener noreferrer" class="proj-live-link">
+              <span>GITHUB_REPO</span> <i class="fas fa-code-branch"></i>
+            </a>
+          </div>
+          <h3 class="proj-title">3D Spatial Genomics ML Pipeline</h3>
+          <p class="proj-desc">
+            Novel deep learning architecture and Graph Neural Network (GNN) modeling framework for analyzing 3D chromatin conformation from Hi-C & Micro-C matrices. Predicts enhancer-promoter loops and topologically associating domain (TAD) boundaries with sub-kilobase resolution.
+          </p>
+          <div class="proj-role-tag">
+            <i class="fas fa-brain text-green"></i> <span>Lead ML Architect & Principal Investigator</span>
+          </div>
+          <div class="proj-chips-row">
+            <span class="proj-chip">#PyTorch</span>
+            <span class="proj-chip">#GraphNeuralNets</span>
+            <span class="proj-chip">#GenomicsML</span>
+            <span class="proj-chip">#Hi-C</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">My Journey</span>
-                <h2 class="section-title">Experience</h2>
+    <!-- Hobbies & Interests -->
+    <section id="interests" class="section">
+      <div class="section-title-wrap">
+        <span class="section-tag">[ LEISURE_&_OFFLINE ]</span>
+        <h2 class="section-heading"><span class="text-cyan">//</span> Hobbies & Passions</h2>
+        <p class="section-sub">Beyond computational pipelines — athletic pursuits, creative visual arts, and outdoor exploration.</p>
+      </div>
+
+      <div class="cyber-two-grid">
+        <div class="cyber-panel">
+          <div class="panel-header">
+            <i class="fas fa-bullseye text-cyan"></i>
+            <span class="panel-filename">~/hobbies.list</span>
+          </div>
+          <div class="panel-body">
+            <div class="interest-boxes-grid">
+              <div class="int-cell">
+                <span class="int-emoji">🏏</span>
+                <span class="int-name">Cricket</span>
+              </div>
+              <div class="int-cell">
+                <span class="int-emoji">🏐</span>
+                <span class="int-name">Volleyball</span>
+              </div>
+              <a href="https://photos.google.com/album/AF1QipPCtJvG8vsY81WdZ6W59tSkxUnQVlOzXO-WK42o" target="_blank" rel="noopener noreferrer" class="int-cell int-link" title="Open Google Photos Album">
+                <span class="int-emoji">📷</span>
+                <span class="int-name">Photography ↗</span>
+              </a>
             </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <span class="timeline-date">Present</span>
-                        </div>
-                        <h3 class="timeline-title">Project Research Scientist</h3>
-                        <p class="timeline-company">
-                            <i class="fas fa-flask"></i>
-                            Chromatin and Epigenetics Lab (CIRI)
-                        </p>
-                        <p class="timeline-description">
-                            Conducting cutting-edge research in Machine Learning applications for genomic data analysis.
-                            Developing novel ML architectures for 3D Spatial Genomics research. Managing HPC/Linux
-                            cluster operations and GPU acceleration workflows for computationally intensive tasks.
-                        </p>
-                        <div class="timeline-tags">
-                            <span>ML Research</span>
-                            <span>Genomics</span>
-                            <span>HPC</span>
-                            <span>GPU Acceleration</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="research-focus">
-                <h3 class="focus-title">
-                    <i class="fas fa-microscope"></i>
-                    Research Focus Areas
-                </h3>
-                <div class="focus-grid">
-                    <div class="focus-card">
-                        <div class="focus-icon">
-                            <i class="fas fa-dna"></i>
-                        </div>
-                        <h4>3D Spatial Genomics</h4>
-                        <p>Developing ML models to understand the 3D organization of genomic structures</p>
-                    </div>
-                    <div class="focus-card">
-                        <div class="focus-icon">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <h4>Deep Learning Architectures</h4>
-                        <p>Designing novel neural network architectures for biological data analysis</p>
-                    </div>
-                    <div class="focus-card">
-                        <div class="focus-icon">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <h4>AI Pipeline Engineering</h4>
-                        <p>Building robust ML pipelines for automated genomic data processing</p>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+
+        <div class="cyber-panel">
+          <div class="panel-header">
+            <i class="fas fa-compass text-green"></i>
+            <span class="panel-filename">~/interests.list</span>
+          </div>
+          <div class="panel-body">
+            <div class="interest-boxes-grid">
+              <div class="int-cell">
+                <span class="int-emoji">🍳</span>
+                <span class="int-name">Cooking</span>
+              </div>
+              <div class="int-cell">
+                <span class="int-emoji">✈️</span>
+                <span class="int-name">Travelling</span>
+              </div>
+              <div class="int-cell">
+                <span class="int-emoji">🏔️</span>
+                <span class="int-name">Nature Exploring</span>
+              </div>
+              <div class="int-cell">
+                <span class="int-emoji">🚶</span>
+                <span class="int-name">Long Walks</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Incoming Transmission (Contact & Form) -->
     <section id="contact" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Let's Connect</span>
-                <h2 class="section-title">Get In Touch</h2>
+      <div class="section-title-wrap">
+        <span class="section-tag">[ INCOMING_TRANSMISSION ]</span>
+        <h2 class="section-heading"><span class="text-green">>_</span> Open Transmission Node</h2>
+        <p class="section-sub">Initiate encrypted communication for research collaborations, AI consulting, or systems partnerships.</p>
+      </div>
+
+      <div class="contact-cyber-grid">
+        <!-- Left Column: Direct Transmissions -->
+        <div class="contact-cyber-info">
+          <div class="direct-comm-card">
+            <div class="comm-header">
+              <i class="fas fa-satellite-dish text-green"></i>
+              <span>DIRECT_CHANNELS</span>
             </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3 class="contact-heading">Let's discuss your next project or research collaboration</h3>
-                    <p class="contact-text">
-                        I'm always interested in hearing about new research opportunities, collaborations,
-                        and innovative projects in the field of Machine Learning and Genomics.
-                    </p>
-                    <div class="contact-cards">
-                        <a href="mailto:Sameermushtaq48@gmail.com" class="contact-card">
-                            <div class="contact-card-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-card-content">
-                                <span class="contact-card-label">Primary Email</span>
-                                <span class="contact-card-value">Sameermushtaq48@gmail.com</span>
-                            </div>
-                            <i class="fas fa-arrow-right contact-card-arrow"></i>
-                        </a>
-                        <a href="mailto:Sommu1921@gmail.com" class="contact-card">
-                            <div class="contact-card-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-card-content">
-                                <span class="contact-card-label">Secondary Email</span>
-                                <span class="contact-card-value">Sommu1921@gmail.com</span>
-                            </div>
-                            <i class="fas fa-arrow-right contact-card-arrow"></i>
-                        </a>
-                        <a href="https://www.google.com/maps/Kashmir" target="_blank" rel="noopener" class="contact-card">
-                            <div class="contact-card-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-card-content">
-                                <span class="contact-card-label">Location</span>
-                                <span class="contact-card-value">Kashmir, India</span>
-                            </div>
-                            <i class="fas fa-arrow-right contact-card-arrow"></i>
-                        </a>
-                    </div>
-                    <div class="contact-socials">
-                        <h4>Connect on Social</h4>
-                        <div class="social-icons">
-                            <a href="https://github.com/SameerMushtaq" target="_blank" rel="noopener" class="social-icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://linkedin.com/in/sameer-mushtaq-931068b2" target="_blank" rel="noopener" class="social-icon">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="https://www.facebook.com/DigitalNinjaOfficial" target="_blank" rel="noopener" class="social-icon">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="https://www.instagram.com/thephoenix1921" target="_blank" rel="noopener" class="social-icon">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
+            <p class="comm-text">Available for academic collaborations, research discussions, machine learning development, and systems consulting.</p>
+            
+            <div class="comm-links-list">
+              <a href="mailto:Sameermushtaq48@gmail.com" class="comm-link">
+                <i class="fas fa-envelope text-cyan"></i>
+                <div class="comm-link-text">
+                  <span class="comm-type">OFFICIAL_PRIMARY_EMAIL</span>
+                  <span class="comm-val">Sameermushtaq48@gmail.com</span>
                 </div>
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="What's this about?">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Your message..." rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
+              </a>
+
+              <a href="https://wa.me/917006249954" target="_blank" rel="noopener noreferrer" class="comm-link">
+                <i class="fab fa-whatsapp text-green"></i>
+                <div class="comm-link-text">
+                  <span class="comm-type">WHATSAPP_HOTLINE</span>
+                  <span class="comm-val">+91 7006249954</span>
                 </div>
+              </a>
+
+              <a href="https://t.me/Sameer1921" target="_blank" rel="noopener noreferrer" class="comm-link">
+                <i class="fab fa-telegram-plane text-cyan"></i>
+                <div class="comm-link-text">
+                  <span class="comm-type">TELEGRAM_HANDLE</span>
+                  <span class="comm-val">@Sameer1921</span>
+                </div>
+              </a>
+
+              <a href="https://www.linkedin.com/in/sameer-mushtaq-931068b2/" target="_blank" rel="noopener noreferrer" class="comm-link">
+                <i class="fab fa-linkedin-in text-cyan"></i>
+                <div class="comm-link-text">
+                  <span class="comm-type">LINKEDIN_PROFILE</span>
+                  <span class="comm-val">sameer-mushtaq-931068b2</span>
+                </div>
+              </a>
+
+              <a href="https://github.com/SameerMushtaq" target="_blank" rel="noopener noreferrer" class="comm-link">
+                <i class="fab fa-github text-green"></i>
+                <div class="comm-link-text">
+                  <span class="comm-type">GITHUB_REPOSITORIES</span>
+                  <span class="comm-val">SameerMushtaq</span>
+                </div>
+              </a>
             </div>
+          </div>
         </div>
+
+        <!-- Right Column: Interactive Dispatcher Form -->
+        <div class="contact-cyber-form-panel">
+          <div class="panel-header">
+            <i class="fas fa-terminal text-cyan"></i>
+            <span class="panel-filename">./message_dispatcher.sh --send</span>
+          </div>
+          
+          <form class="cyber-form" id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name"><span class="text-green">></span> SENDER_NAME *</label>
+                <input type="text" id="contact-name" class="cyber-input" placeholder="e.g. Dr. Alex Mercer / John Doe" required />
+                <span class="field-err" id="name-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email"><span class="text-green">></span> SENDER_EMAIL *</label>
+                <input type="email" id="contact-email" class="cyber-input" placeholder="e.g. collaborator@institution.edu" required />
+                <span class="field-err" id="email-error"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject"><span class="text-green">></span> TRANSMISSION_SUBJECT *</label>
+              <input type="text" id="contact-subject" class="cyber-input" placeholder="e.g. Collaboration Proposal: 3D Hi-C Modeling" required />
+              <span class="field-err" id="subject-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message"><span class="text-green">></span> PAYLOAD_MESSAGE *</label>
+              <textarea id="contact-message" class="cyber-input cyber-textarea" placeholder="Detail your project specifications, research timeline, or questions..." rows="4" required></textarea>
+              <span class="field-err" id="message-error"></span>
+            </div>
+
+            <button type="submit" class="cyber-btn cyber-btn-primary full-width" id="btn-submit-form">
+              <span class="btn-bracket">[</span>
+              <i class="fas fa-paper-plane"></i>
+              <span>TRANSMIT_PAYLOAD</span>
+              <span class="btn-bracket">]</span>
+            </button>
+          </form>
+
+          <!-- Live Visitors & Hits Telemetry -->
+          <div class="telemetry-counter-row">
+            <div class="telemetry-counter-card">
+              <span class="counter-num text-cyan" id="total-visits">1,429</span>
+              <span class="counter-lbl">//TOTAL_SITE_HITS</span>
+            </div>
+            <div class="telemetry-counter-card">
+              <span class="counter-num text-green" id="unique-visitors">790</span>
+              <span class="counter-lbl">//UNIQUE_NODES</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#" class="footer-logo">SM<span class="accent">.</span></a>
-                    <p>ML Specialist | PhD Scholar | Research Scientist</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="footer-socials">
-                    <a href="https://github.com/SameerMushtaq" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/sameer-mushtaq-931068b2" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.facebook.com/DigitalNinjaOfficial" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/thephoenix1921" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Sameer Mushtaq Tantray. All rights reserved.</p>
-                <p>Designed with <i class="fas fa-heart"></i> in Kashmir</p>
-            </div>
-        </div>
+    <footer class="cyber-footer">
+      <div class="footer-inner">
+        <p class="footer-brand">[DN::SAMEER_MUSHTAQ_TANTRAY] // PhD SCHOLAR · RESEARCH SCIENTIST</p>
+        <p class="footer-copyright">&copy; 2026 Sameer Mushtaq Tantray. All rights reserved. · Engineered with Bio-Matrix Aesthetics in Kashmir.</p>
+      </div>
     </footer>
 
-    <script src="script.js"></script>
+  </div>
+
+  <!-- Interactive Service Details Modal -->
+  <div id="service-modal" class="modal-overlay hidden" aria-hidden="true" role="dialog">
+    <div class="modal-cyber-card">
+      <div class="modal-cyber-header">
+        <div class="modal-header-left">
+          <i class="fas fa-terminal text-cyan"></i>
+          <h3 id="modal-title" class="modal-cyber-title">SERVICE_SPECIFICATIONS</h3>
+        </div>
+        <button class="modal-cyber-close" onclick="closeServiceModal()" aria-label="Close Modal">✕</button>
+      </div>
+      <div id="modal-items-list" class="modal-cyber-items"></div>
+      <div class="modal-cyber-footer">
+        <a href="#contact" class="cyber-btn cyber-btn-primary" onclick="closeServiceModal()">
+          <span>[INQUIRE_SERVICE]</span>
+        </a>
+        <button class="cyber-btn cyber-btn-ghost" onclick="closeServiceModal()">[CLOSE]</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Box -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Script Engine -->
+  <script src="script.js"></script>
 </body>
 </html>

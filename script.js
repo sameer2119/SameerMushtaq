@@ -1,279 +1,726 @@
-// Initialize variables
-const navbar = document.querySelector('.navbar');
-const heroSection = document.querySelector('.hero');
-const particlesCanvas = document.getElementById('particles');
-const ctx = particlesCanvas.getContext('2d');
+/**
+ * SAMEER MUSHTAQ TANTRAY // BIOINFORMATICS HACKER ENGINE
+ * Live Matrix Rain Canvas, Interactive CLI Terminal, Audio FX, and Telemetry
+ */
 
-// Canvas setup for particles
-let particles = [];
-let animationId = null;
+(function () {
+  'use strict';
 
-function initCanvas() {
-    const heroBg = document.querySelector('.hero-bg');
-    particlesCanvas.width = heroBg.clientWidth;
-    particlesCanvas.height = heroBg.clientHeight;
-    resizeCanvas();
-    createParticles();
-    animate();
-}
+  // --------------------------------------------------------------------------
+  // 1. Live Matrix Canvas (Genomic ATCG + Cyber Code Stream)
+  // --------------------------------------------------------------------------
+  let matrixRunning = true;
+  let matrixInterval = null;
 
-// Canvas resize
-function resizeCanvas() {
-    const heroBg = document.querySelector('.hero-bg');
-    particlesCanvas.width = heroBg.clientWidth;
-    particlesCanvas.height = heroBg.clientHeight;
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.02)';
-}
+  function initMatrixRain() {
+    const canvas = document.getElementById('matrix-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-// Create particles - circles orbiting
-function createParticles() {
-    particles = [];
-    const particleCount = Math.min(20, Math.floor(petitiveCanvas.width / 100));
-
-    for (let i = 0; i < particleCount; i++) {
-        particles.push({
-            x: Math.random() * particlesCanvas.width,
-            y: Math.random() * particlesCanvas.height,
-            radius: Math.random() * 1 + 0.5,
-            speedX: (Math.random() - 0.5) * 0.3,
-            speedY: (Math.random() - 0.5) * 0.3,
-            opacity: Math.random() * 0.5 + 0.1
-        });
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
-}
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
 
-// Animate particles
-function animate() {
-    ctx.clearRect(0, 0, particlesCanvas.width, particlesCanvas.height);
+    // Genomic Nucleotides & Hacker Characters
+    const chars = 'ATCG01λμΩ∑π🧬⚡<>[]{}/\\=+*~#@!';
+    const fontSize = 15;
+    const columns = Math.floor(window.innerWidth / fontSize);
+    const drops = [];
 
-    particles.forEach(particle => {
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-
-        // Wrap around edges
-        if (particle.x < 0) particle.x = particlesCanvas.width;
-        if (particle.x > particlesCanvas.width) particle.x = 0;
-        if (particle.y < 0) particle.y = particlesCanvas.height;
-        if (particle.y > particlesCanvas.height) particle.y = 0;
-
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(99, 102, 241, ${particle.opacity})`;
-        ctx.fill();
-    });
-
-    animationId = requestAnimationFrame(animate);
-}
-
-// Scroll effect for navbar
-let lastScroll = 0;
-function handleScroll() {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > lastScroll && currentScroll > 200) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    for (let i = 0; i < columns; i++) {
+      drops[i] = Math.floor(Math.random() * -100);
     }
 
-    lastScroll = currentScroll;
-}
+    function draw() {
+      if (!matrixRunning) return;
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+      // Translucent black overlay for trailing ghost effect
+      ctx.fillStyle = 'rgba(5, 7, 10, 0.08)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
+      ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
 
-// Scroll reveal animations
-const observerOptions = {
-    threshold: 0.2,
-    rootMargin: '0px 0px -50px 0px'
-};
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
-        }
-    });
-}, observerOptions);
-
-// Observe all section elements
-document.querySelectorAll('.section').forEach(section => {
-    section.style.animationPlayState = 'paused';
-    observer.observe(section);
-});
-
-// Mobile menu toggle
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
-
-if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
-
-        // Toggle hamburger animation
-        const hamburger = navToggle.querySelector('.hamburger');
-        if (hamburger.classList.contains('active')) {
-            hamburger.style.transform = 'rotate(45deg) translate(6px, 6px)';
+        // Head character is luminous cyan/white, tail is matrix green
+        if (Math.random() > 0.88) {
+          ctx.fillStyle = '#00f3ff';
+          ctx.shadowColor = '#00f3ff';
+          ctx.shadowBlur = 8;
         } else {
-            hamburger.style.transform = 'none';
-        }
-    });
-});
-
-// Form submission
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value || 'Inquiry';
-        const message = document.getElementById('message').value;
-
-        // Simple form validation
-        if (!name || !email || !message) {
-            alert('Please fill in all required fields.');
-            return;
+          ctx.fillStyle = '#00ff41';
+          ctx.shadowColor = '#00ff41';
+          ctx.shadowBlur = 3;
         }
 
-        // In a real application, this would send to a backend service
-        // For now, we'll just show a success message
-        alert(`Thank you ${name}! Your message has been sent successfully. I'll get back to you at ${email} soon.`);
+        ctx.fillText(text, x, y);
+        ctx.shadowBlur = 0;
 
-        contactForm.reset();
-    });
-}
-
-// Theme switching functionality
-function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('preferred-theme', theme);
-}
-
-function initializeTheme() {
-    const savedTheme = localStorage.getItem('preferred-theme') ||
-                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    setTheme(savedTheme);
-}
-
-function setupThemeToggle() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeMenu = document.getElementById('theme-menu');
-
-    if (themeToggle && themeMenu) {
-        themeToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            themeMenu.classList.toggle('active');
-        });
-
-        const themeOptions = themeMenu.querySelectorAll('.theme-option');
-        themeOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                const theme = option.getAttribute('data-theme');
-                setTheme(theme);
-                themeMenu.classList.remove('active');
-
-                // Update active state
-                themeOptions.forEach(opt => opt.classList.remove('active'));
-                option.classList.add('active');
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!themeMenu.contains(e.target) && !themeToggle.contains(e.target)) {
-                themeMenu.classList.remove('active');
-            }
-        });
-
-        // Set initial active state
-        const activeOption = themeMenu.querySelector(`.theme-option[data-theme="${document.documentElement.getAttribute('data-theme')}"]`);
-        if (activeOption) {
-            activeOption.classList.add('active');
+        if (y > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
         }
+        drops[i]++;
+      }
     }
-}
 
-// Initialize on load
-// Mobile menu close function
-function closeMobileMenu() {
-    const navMenu = document.querySelector('.nav-menu');
-    const navToggle = document.querySelector('.nav-toggle');
-    if (navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-        const hamburger = navToggle.querySelector('.hamburger');
-        if (hamburger) {
-            hamburger.style.transform = 'none';
+    if (matrixInterval) clearInterval(matrixInterval);
+    matrixInterval = setInterval(draw, 33);
+
+    // Matrix Toggle Button
+    const matrixBtn = document.getElementById('btn-toggle-matrix');
+    if (matrixBtn) {
+      matrixBtn.addEventListener('click', () => {
+        matrixRunning = !matrixRunning;
+        matrixBtn.classList.toggle('active', matrixRunning);
+        if (!matrixRunning) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          showToast('MATRIX_STREAM: PAUSED', 'info');
+        } else {
+          showToast('MATRIX_STREAM: ACTIVE', 'info');
         }
+        playCyberBeep(600, 0.05);
+      });
     }
-}
+  }
 
-// Initialize on load
-document.addEventListener('DOMContentLoaded', () => {
-    initializeTheme();
-    setupThemeToggle();
-    initCanvas();
-    handleScroll();
+  // --------------------------------------------------------------------------
+  // 2. Web Audio Synthesizer (Retro Terminal Feedback)
+  // --------------------------------------------------------------------------
+  let soundEnabled = false;
+  let audioCtx = null;
 
-    // Add fade-in animation styles
-    const sections = document.querySelectorAll('.section');
-    sections.forEach((section, index) => {
-        section.style.transition = 'opacity 0.6s ease';
+  function playCyberBeep(freq = 440, duration = 0.04) {
+    if (!soundEnabled) return;
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    } catch (e) {}
+  }
+
+  function initHudControls() {
+    // CRT Overlay Toggle
+    const crtBtn = document.getElementById('btn-toggle-crt');
+    if (crtBtn) {
+      crtBtn.addEventListener('click', () => {
+        document.body.classList.toggle('crt-enabled');
+        const isEnabled = document.body.classList.contains('crt-enabled');
+        crtBtn.classList.toggle('active', isEnabled);
+        showToast(`CRT_SCANLINES: ${isEnabled ? 'ENABLED' : 'DISABLED'}`, 'info');
+        playCyberBeep(520, 0.05);
+      });
+    }
+
+    // Audio FX Toggle
+    const soundBtn = document.getElementById('btn-toggle-sound');
+    if (soundBtn) {
+      soundBtn.addEventListener('click', () => {
+        soundEnabled = !soundEnabled;
+        soundBtn.classList.toggle('active', soundEnabled);
+        if (soundEnabled) {
+          playCyberBeep(880, 0.08);
+          showToast('AUDIO_SYNTH: ENABLED', 'success');
+        } else {
+          showToast('AUDIO_SYNTH: MUTED', 'info');
+        }
+      });
+    }
+
+    // Attach subtle beep to buttons
+    document.querySelectorAll('.cyber-btn, .cmd-pill, .nav-link').forEach((el) => {
+      el.addEventListener('click', () => playCyberBeep(700, 0.03));
     });
+  }
 
-    // Add active class on scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animationPlayState = 'running';
-                if (entry.target.classList.contains('fade-in-up')) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            }
-        });
-    }, { threshold: 0.3 });
+  // --------------------------------------------------------------------------
+  // 3. Live Real-Time Telemetry Clock
+  // --------------------------------------------------------------------------
+  function initLiveClock() {
+    const clockEl = document.getElementById('sys-clock');
+    if (!clockEl) return;
 
-    document.querySelectorAll('.fade-in-up').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
+    function update() {
+      const now = new Date();
+      const hours = String(now.getUTCHours()).padStart(2, '0');
+      const mins = String(now.getUTCMinutes()).padStart(2, '0');
+      const secs = String(now.getUTCSeconds()).padStart(2, '0');
+      clockEl.textContent = `${hours}:${mins}:${secs} UTC`;
+    }
+    update();
+    setInterval(update, 1000);
+  }
+
+  // --------------------------------------------------------------------------
+  // 4. Hero Typing Command Sequence
+  // --------------------------------------------------------------------------
+  function initHeroTypewriter() {
+    const target = document.getElementById('hero-typing-target');
+    if (!target) return;
+
+    const commands = [
+      'python run_pipeline.py --mode "3D_Spatial_Genomics"',
+      'torch.cuda.set_device(0) # Initializing CIRI ML Cluster',
+      'hic_predictor --input sample.cool --model GNN_Transformer',
+      'nextjs dev # Launching Academic Research Platform',
+      'systemctl status hpc-cluster.service # 100% Online'
+    ];
+
+    let cmdIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    let speed = 70;
+
+    function typeLoop() {
+      const current = commands[cmdIdx];
+
+      if (isDeleting) {
+        target.textContent = current.substring(0, charIdx - 1);
+        charIdx--;
+        speed = 30;
+      } else {
+        target.textContent = current.substring(0, charIdx + 1);
+        charIdx++;
+        speed = 65;
+      }
+
+      if (!isDeleting && charIdx === current.length) {
+        speed = 2200;
+        isDeleting = true;
+      } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        cmdIdx = (cmdIdx + 1) % commands.length;
+        speed = 400;
+      }
+
+      setTimeout(typeLoop, speed);
+    }
+
+    setTimeout(typeLoop, 600);
+  }
+
+  // --------------------------------------------------------------------------
+  // 5. Interactive Live CLI Terminal Sandbox
+  // --------------------------------------------------------------------------
+  const CLI_COMMANDS = {
+    help: `[AVAILABLE SYSTEM COMMANDS]:
+  help                 - Display this directory of available commands
+  cat profile.txt      - Display Sameer's research background & trajectory
+  tree skills          - Display technical capability matrix & disciplines
+  ls services          - List all 6 specialized consulting & engineering services
+  cat projects.json    - List active featured deployments & research pipelines
+  status --cluster     - Check live HPC cluster node telemetry & resource loads
+  contact              - Print direct transmission channels & email endpoints
+  wget cv              - Trigger download for Sameer's official Curriculum Vitae (PDF)
+  clear / cls          - Clear the terminal screen`,
+
+    'cat profile.txt': `[RESEARCH_PROFILE // SAMEER MUSHTAQ TANTRAY]:
+- Status: PhD Scholar in Computer Science @ University of Kashmir
+- Lab: Project Research Scientist @ Chromatin & Epigenetics Lab (CIRI)
+- Education: MCA (IUST), B.Sc. Computer Science (Univ. of Kashmir)
+- Core Focus: Machine Learning & GNNs for 3D Spatial Genomics & Hi-C Modeling
+- Systems: Root-level kernel tuning, storage recovery, HPC cluster orchestration`,
+
+    bio: `[RESEARCH_PROFILE // SAMEER MUSHTAQ TANTRAY]:
+- Status: PhD Scholar in Computer Science @ University of Kashmir
+- Lab: Project Research Scientist @ Chromatin & Epigenetics Lab (CIRI)
+- Education: MCA (IUST), B.Sc. Computer Science (Univ. of Kashmir)
+- Core Focus: Machine Learning & GNNs for 3D Spatial Genomics & Hi-C Modeling
+- Systems: Root-level kernel tuning, storage recovery, HPC cluster orchestration`,
+
+    'tree skills': `[TECHNICAL_CAPABILITY_TREE]:
+├── 01. Machine Learning & AI [PyTorch, GATs, CNNs, Attention Models, Sequence ML]
+├── 02. 3D Spatial Genomics   [Hi-C / Micro-C Contact Matrices, Cool, Mcool, Pairs]
+├── 03. High Performance Comp [Linux Kernel, SLURM, CUDA Multi-GPU Acceleration]
+├── 04. Systems Engineering   [Lossless Disk Diagnostics, Data Recovery, Hardware]
+└── 05. Full-Stack Dev        [Next.js, React, Node.js, PostgreSQL, Cloud APIs]`,
+
+    skills: `[TECHNICAL_CAPABILITY_TREE]:
+├── 01. Machine Learning & AI [PyTorch, GATs, CNNs, Attention Models, Sequence ML]
+├── 02. 3D Spatial Genomics   [Hi-C / Micro-C Contact Matrices, Cool, Mcool, Pairs]
+├── 03. High Performance Comp [Linux Kernel, SLURM, CUDA Multi-GPU Acceleration]
+├── 04. Systems Engineering   [Lossless Disk Diagnostics, Data Recovery, Hardware]
+└── 05. Full-Stack Dev        [Next.js, React, Node.js, PostgreSQL, Cloud APIs]`,
+
+    'ls services': `[OFFICIAL SERVICES CATALOG]:
+1. ML & Genomic Analysis     -> Hi-C modeling, TAD prediction, multi-omics AI
+2. System Technician         -> OS install, kernel tuning, HPC config, recovery
+3. Software Engineering      -> Toolchain builds, patched binaries, parallel compute
+4. Web Development & Cloud   -> Next.js research portals, interactive visualizers
+5. Graphics Designing        -> Scientific figures, vector abstracts, conference posters
+6. Office Automation         -> Automated reporting, LaTeX compilation, macros`,
+
+    services: `[OFFICIAL SERVICES CATALOG]:
+1. ML & Genomic Analysis     -> Hi-C modeling, TAD prediction, multi-omics AI
+2. System Technician         -> OS install, kernel tuning, HPC config, recovery
+3. Software Engineering      -> Toolchain builds, patched binaries, parallel compute
+4. Web Development & Cloud   -> Next.js research portals, interactive visualizers
+5. Graphics Designing        -> Scientific figures, vector abstracts, conference posters
+6. Office Automation         -> Automated reporting, LaTeX compilation, macros`,
+
+    'cat projects.json': `[ACTIVE FEATURED DEPLOYMENTS]:
+{
+  "01": {
+    "title": "Instrument Bookings System - CIRI",
+    "role": "Lead Developer & System Architect",
+    "url": "https://ablabinstruments.vercel.app",
+    "stack": ["Next.js", "TailwindCSS", "PostgreSQL", "SchedulerEngine"]
+  },
+  "02": {
+    "title": "Placement Management System - IUST",
+    "role": "Lead Developer & System Architect",
+    "access": "Internal University Platform",
+    "stack": ["Node.js", "Automation", "DatabaseArchitecture", "Analytics"]
+  },
+  "03": {
+    "title": "F2 Sports — E-Commerce Store",
+    "role": "Full-Stack & E-Commerce Architect",
+    "url": "https://f2sportsstore.vercel.app",
+    "stack": ["Next.js", "TailwindCSS", "D2CCommerce", "CustomConfigurator"]
+  },
+  "04": {
+    "title": "3D Spatial Genomics ML Pipeline",
+    "role": "Lead ML Architect & Principal Investigator",
+    "repo": "https://github.com/SameerMushtaq",
+    "stack": ["PyTorch", "GNNs", "Hi-C", "TAD_Predictor"]
+  }
+}`,
+
+    projects: `[ACTIVE FEATURED DEPLOYMENTS]:
+1. Instrument Bookings System - CIRI (https://ablabinstruments.vercel.app)
+2. Placement Management System - IUST (Internal University Portal)
+3. F2 Sports — E-Commerce Store (https://f2sportsstore.vercel.app)
+4. 3D Spatial Genomics ML Pipeline (https://github.com/SameerMushtaq)`,
+
+    'status --cluster': `[CIRI-HPC-CLUSTER STATUS TELEMETRY]:
+- Node ID: CIRI-ML-NODE-01 (Ubuntu 22.04 LTS Kernel 6.8.0-HPC)
+- GPU Load: 94.2% [NVIDIA RTX / A100 Tensor Cores Active]
+- Memory Allocation: 48.6 GB / 128.0 GB Used
+- Active Job: "Hi-C Enhancer-Promoter Attention Predictor [Job #4819]"
+- Cluster Integrity: 100% Operational`,
+
+    status: `[CIRI-HPC-CLUSTER STATUS TELEMETRY]:
+- Node ID: CIRI-ML-NODE-01 (Ubuntu 22.04 LTS Kernel 6.8.0-HPC)
+- GPU Load: 94.2% [NVIDIA RTX / A100 Tensor Cores Active]
+- Memory Allocation: 48.6 GB / 128.0 GB Used
+- Active Job: "Hi-C Enhancer-Promoter Attention Predictor [Job #4819]"
+- Cluster Integrity: 100% Operational`,
+
+    contact: `[TRANSMISSION ENDPOINTS]:
+- Primary Email: Sameermushtaq48@gmail.com
+- WhatsApp Hotline: +91 7006249954 (https://wa.me/917006249954)
+- Telegram: @Sameer1921 (https://t.me/Sameer1921)
+- GitHub: https://github.com/SameerMushtaq
+- LinkedIn: https://www.linkedin.com/in/sameer-mushtaq-931068b2/
+- Instagram: https://www.instagram.com/thephoenix1921/
+- Facebook: https://www.facebook.com/DigitalNinjaOfficial/`,
+
+    'wget cv': 'Triggering download: CV_Sameer.pdf ... [200 OK]'
+  };
+
+  window.executeTermCommand = function (cmdStr) {
+    const output = document.getElementById('term-output');
+    const input = document.getElementById('terminal-input');
+    if (!output) return;
+
+    const trimmed = cmdStr.trim().toLowerCase();
+
+    // Create user prompt line
+    const userLine = document.createElement('div');
+    userLine.className = 'term-line';
+    userLine.innerHTML = `<span class="text-green">sameer@research-node:~$</span> <span class="text-bright">${cmdStr}</span>`;
+    output.appendChild(userLine);
+
+    if (trimmed === 'clear' || trimmed === 'cls') {
+      output.innerHTML = `
+        <div class="term-line banner-line">
+================================================================================
+  SAMEER MUSHTAQ TANTRAY - BIOINFORMATICS & ML INTELLIGENCE TERMINAL v4.2
+  Type 'help' for command directory | Click quick command buttons below
+================================================================================
+        </div>
+      `;
+      if (input) input.value = '';
+      return;
+    }
+
+    if (trimmed === 'wget cv' || trimmed === 'wget cv.pdf' || trimmed === 'download cv') {
+      const link = document.createElement('a');
+      link.href = './CV_Sameer.pdf';
+      link.download = 'CV_Sameer.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('CV_Sameer.pdf download initiated', 'success');
+    }
+
+    const response = CLI_COMMANDS[trimmed] || `bash: ${cmdStr}: command not found. Type 'help' to see all available commands.`;
+    const respLine = document.createElement('div');
+    respLine.className = 'term-line text-cyan';
+    respLine.textContent = response;
+    output.appendChild(respLine);
+
+    output.scrollTop = output.scrollHeight;
+    if (input) input.value = '';
+    playCyberBeep(580, 0.04);
+  };
+
+  function initTerminalListeners() {
+    const input = document.getElementById('terminal-input');
+    const runBtn = document.getElementById('term-run-btn');
+
+    if (input) {
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && input.value.trim()) {
+          window.executeTermCommand(input.value);
+        }
+      });
+    }
+
+    if (runBtn && input) {
+      runBtn.addEventListener('click', () => {
+        if (input.value.trim()) {
+          window.executeTermCommand(input.value);
+        }
+      });
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // 6. Service Specification Modals
+  // --------------------------------------------------------------------------
+  const SERVICE_ITEMS = {
+    genomics: {
+      title: "Machine Learning & Genomic Analysis",
+      items: [
+        "Deep Learning for Hi-C / Micro-C Modeling",
+        "Chromatin Conformation & TAD Prediction",
+        "Neural Network Architectures for Multi-Omics",
+        "Whole Genome Sequencing (WGS) ML Pipelines",
+        "RNA-Seq, ChIP-Seq & ATAC-Seq Predictive Analysis",
+        "FastQ to Contact Map Automated Processing",
+        "Pairs, Cool & Mcool High-Performance Parsing",
+        "Graph Neural Networks for Genomic Topology",
+        "Feature Engineering for Biological Sequences"
+      ]
+    },
+    system: {
+      title: "System Technician",
+      items: [
+        "OS Installation & Linux Kernel Optimization",
+        "System Recovery & Deep Disk Diagnostics",
+        "Password Recovery & Total Data Preservation",
+        "HPC Cluster Setup & GPU Configuration",
+        "NVMe/SSD/HDD Lossless Partition Recovery",
+        "Driver & CUDA Toolchain Environment Config"
+      ]
+    },
+    software: {
+      title: "Software Engineering",
+      items: [
+        "Bioinformatics & ML Software Environment Setup",
+        "PyTorch, TensorFlow & CUDA Installations",
+        "Windows / macOS / Linux System Patches",
+        "Binary Modification & Custom Packaging",
+        "Application Deployment & Performance Profiling",
+        "Custom Developer Environment Configuration"
+      ]
+    },
+    web: {
+      title: "Web Development & Cloud",
+      items: [
+        "Interactive Genomic & ML Dashboards",
+        "Full-Stack Academic Portals & APIs",
+        "Cloud Deployment (Vercel, AWS, Cloudflare)",
+        "Data Visualization with D3 / Plotly / Canvas",
+        "Frontend & Backend Integration",
+        "Research Platform Optimization & Maintenance"
+      ]
+    },
+    graphics: {
+      title: "Graphics Designing",
+      items: [
+        "Publication Figures & Scientific Visualizations",
+        "Conference Posters & High-Resolution Banners",
+        "Vector Illustration (Illustrator, Corel, Inkscape)",
+        "Academic Slide Decks & Graphical Abstracts",
+        "Branding, Logos & Digital Ninja Media"
+      ]
+    },
+    office: {
+      title: "Office Automation",
+      items: [
+        "Automated Research Pipelines & Scripting",
+        "LaTeX Document Preparation & Mendeley Sync",
+        "Complex Statistical Excel Worksheets & Macros",
+        "MS Word Academic Formatting & Journal Standards",
+        "Relational Database Layouts & Queries"
+      ]
+    }
+  };
+
+  window.showServiceModal = function (key) {
+    const modal = document.getElementById('service-modal');
+    const title = document.getElementById('modal-title');
+    const list = document.getElementById('modal-items-list');
+    const data = SERVICE_ITEMS[key];
+
+    if (!data || !modal || !title || !list) return;
+
+    title.textContent = `[SPEC]: ${data.title.toUpperCase()}`;
+    list.innerHTML = data.items.map((it) => `<div class="modal-item-pill">${it}</div>`).join('');
+
+    modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    playCyberBeep(750, 0.05);
+  };
+
+  window.closeServiceModal = function () {
+    const modal = document.getElementById('service-modal');
+    if (modal) {
+      modal.classList.add('hidden');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      playCyberBeep(400, 0.04);
+    }
+  };
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      window.closeServiceModal();
+    }
+  });
+
+  const modal = document.getElementById('service-modal');
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) window.closeServiceModal();
     });
+  }
 
-    // Recalculate canvas size on resize
-    window.addEventListener('resize', () => {
-        resizeCanvas();
-    });
+  // --------------------------------------------------------------------------
+  // 7. Navigation, ScrollSpy & Mobile Drawer
+  // --------------------------------------------------------------------------
+  function initNavigation() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.cyber-nav-links .nav-link');
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-links');
 
-    // Close mobile menu on nav link click
-    document.querySelectorAll('.nav-link').forEach(link => {
+    function highlightScroll() {
+      const pos = (window.scrollY || window.pageYOffset) + 160;
+
+      sections.forEach((sec) => {
+        const top = sec.offsetTop;
+        const height = sec.offsetHeight;
+        const id = sec.getAttribute('id');
+
+        if (pos >= top && pos < top + height) {
+          navLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }
+
+    window.addEventListener('scroll', highlightScroll, { passive: true });
+    highlightScroll();
+
+    if (mobileToggle && navMenu) {
+      mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navMenu.classList.toggle('active');
+        playCyberBeep(600, 0.03);
+      });
+
+      document.querySelectorAll('.cyber-nav-links .nav-link').forEach((link) => {
         link.addEventListener('click', () => {
-            closeMobileMenu();
+          navMenu.classList.remove('active');
         });
-    });
-});
+      });
 
-// Cleanup on page unload
-window.addEventListener('beforeunload', () => {
-    if (animationId) {
-        cancelAnimationFrame(animationId);
+      document.addEventListener('click', (e) => {
+        if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+          navMenu.classList.remove('active');
+        }
+      });
     }
-});
+  }
+
+  // --------------------------------------------------------------------------
+  // 8. Visitor Telemetry Counter
+  // --------------------------------------------------------------------------
+  function initCounters() {
+    const totalEl = document.getElementById('total-visits');
+    const uniqueEl = document.getElementById('unique-visitors');
+
+    let visits = parseInt(localStorage.getItem('sameer_hacker_visits') || '1429', 10) + 1;
+    localStorage.setItem('sameer_hacker_visits', visits);
+
+    let uniques = parseInt(localStorage.getItem('sameer_hacker_uniques') || '790', 10);
+    if (!localStorage.getItem('sameer_hacker_node_visited')) {
+      uniques += 1;
+      localStorage.setItem('sameer_hacker_uniques', uniques);
+      localStorage.setItem('sameer_hacker_node_visited', 'true');
+    }
+
+    if (totalEl) totalEl.textContent = visits.toLocaleString();
+    if (uniqueEl) uniqueEl.textContent = uniques.toLocaleString();
+  }
+
+  // --------------------------------------------------------------------------
+  // 9. Toast Notification Engine
+  // --------------------------------------------------------------------------
+  function showToast(message, type = 'success', duration = 4000) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+
+    let icon = 'fa-terminal';
+    if (type === 'error') icon = 'fa-triangle-exclamation text-magenta';
+    if (type === 'success') icon = 'fa-circle-check text-green';
+    if (type === 'info') icon = 'fa-satellite-dish text-cyan';
+
+    toast.innerHTML = `
+      <i class="fas ${icon}"></i>
+      <span>${message}</span>
+    `;
+
+    container.appendChild(toast);
+
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(15px)';
+      toast.style.transition = 'all 0.3s ease';
+      setTimeout(() => {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+      }, 300);
+    }, duration);
+  }
+
+  // --------------------------------------------------------------------------
+  // 10. Contact Form Dispatcher
+  // --------------------------------------------------------------------------
+  function initContactForm() {
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('btn-submit-form');
+    if (!form || !submitBtn) return;
+
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email');
+    const subjectInput = document.getElementById('contact-subject');
+    const messageInput = document.getElementById('contact-message');
+
+    const nameErr = document.getElementById('name-error');
+    const emailErr = document.getElementById('email-error');
+    const subjectErr = document.getElementById('subject-error');
+    const messageErr = document.getElementById('message-error');
+
+    function validateEmail(em) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em);
+    }
+
+    function clearErrors() {
+      [nameInput, emailInput, subjectInput, messageInput].forEach((inp) => {
+        if (inp) inp.classList.remove('invalid');
+      });
+      [nameErr, emailErr, subjectErr, messageErr].forEach((err) => {
+        if (err) err.textContent = '';
+      });
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      clearErrors();
+
+      let valid = true;
+
+      if (!nameInput.value.trim()) {
+        nameInput.classList.add('invalid');
+        if (nameErr) nameErr.textContent = '! Please specify sender name';
+        valid = false;
+      }
+
+      if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
+        emailInput.classList.add('invalid');
+        if (emailErr) emailErr.textContent = '! Valid email address required for return route';
+        valid = false;
+      }
+
+      if (!subjectInput.value.trim()) {
+        subjectInput.classList.add('invalid');
+        if (subjectErr) subjectErr.textContent = '! Subject header required';
+        valid = false;
+      }
+
+      if (!messageInput.value.trim()) {
+        messageInput.classList.add('invalid');
+        if (messageErr) messageErr.textContent = '! Payload message cannot be empty';
+        valid = false;
+      }
+
+      if (!valid) {
+        showToast('FORM_ERROR: Please correct highlighted fields', 'error');
+        playCyberBeep(220, 0.1);
+        return;
+      }
+
+      const origHtml = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="text-green"><i class="fas fa-spinner fa-spin"></i> TRANSMITTING_PAYLOAD...</span>';
+      playCyberBeep(880, 0.08);
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origHtml;
+
+        const sender = nameInput.value.trim();
+        showToast(`TRANSMISSION_ACK: Message received from ${sender}. Sameer will respond shortly.`, 'success', 6000);
+        form.reset();
+        playCyberBeep(980, 0.1);
+      }, 1100);
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 11. Initializer Bootstrap
+  // --------------------------------------------------------------------------
+  document.addEventListener('DOMContentLoaded', () => {
+    initMatrixRain();
+    initHudControls();
+    initLiveClock();
+    initHeroTypewriter();
+    initTerminalListeners();
+    initNavigation();
+    initCounters();
+    initContactForm();
+  });
+
+  if (document.readyState !== 'loading') {
+    initMatrixRain();
+    initHudControls();
+    initLiveClock();
+    initHeroTypewriter();
+    initTerminalListeners();
+    initNavigation();
+    initCounters();
+    initContactForm();
+  }
+})();
