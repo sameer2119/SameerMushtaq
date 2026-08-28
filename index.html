@@ -73,27 +73,6 @@
       </div>
 
       <div class="hud-controls">
-        <!-- Vertical HUD Controls Dock (CLI/Matrix, CRT, Audio stacked vertically) -->
-        <div class="vertical-hud-dock">
-          <!-- Matrix Rain Toggle (CLI) -->
-          <button class="hud-btn" id="btn-toggle-matrix" title="Toggle Matrix Stream (CLI)" aria-label="Toggle Matrix Rain">
-            <i class="fas fa-terminal"></i>
-            <span class="btn-tooltip">CLI_MATRIX</span>
-          </button>
-          
-          <!-- CRT Scanline Toggle -->
-          <button class="hud-btn" id="btn-toggle-crt" title="Toggle CRT Screen Glow" aria-label="Toggle CRT Scanlines">
-            <i class="fas fa-tv"></i>
-            <span class="btn-tooltip">CRT_SCANLINES</span>
-          </button>
-
-          <!-- Audio FX Toggle -->
-          <button class="hud-btn" id="btn-toggle-sound" title="Toggle Cyber Audio FX" aria-label="Toggle Audio Effects">
-            <i class="fas fa-volume-high"></i>
-            <span class="btn-tooltip">AUDIO_SYNTH</span>
-          </button>
-        </div>
-
         <!-- Download CV -->
         <a href="./CV_Sameer.pdf" download="CV_Sameer.pdf" class="hud-btn hud-btn-cv" title="Download CV ($ wget ./CV_Sameer.pdf)">
           <i class="fas fa-file-code"></i>
@@ -166,54 +145,78 @@
           </div>
         </div>
 
-        <!-- Right Column: Cyber HUD Avatar Card with 3-Way Laser Scan -->
+        <!-- Right Column: Cyber HUD Avatar Card with 3-Way Laser Scan + Extreme Corner Controls Dock -->
         <div class="hero-right">
-          <div class="hud-card">
-            <!-- HUD Bracket Corners -->
-            <div class="hud-corner top-left"></div>
-            <div class="hud-corner top-right"></div>
-            <div class="hud-corner bottom-left"></div>
-            <div class="hud-corner bottom-right"></div>
+          <div class="hero-photo-cluster">
+            <div class="hud-card">
+              <!-- HUD Bracket Corners -->
+              <div class="hud-corner top-left"></div>
+              <div class="hud-corner top-right"></div>
+              <div class="hud-corner bottom-left"></div>
+              <div class="hud-corner bottom-right"></div>
 
-            <div class="hud-header">
-              <span class="hud-dot red"></span>
-              <span class="hud-dot yellow"></span>
-              <span class="hud-dot green"></span>
-              <span class="hud-title">SUBJECT_ID: SAMEER_TANTRAY // PhD_SCHOLAR</span>
+              <div class="hud-header">
+                <span class="hud-dot red"></span>
+                <span class="hud-dot yellow"></span>
+                <span class="hud-dot green"></span>
+                <span class="hud-title">SUBJECT_ID: SAMEER_TANTRAY // PhD_SCHOLAR</span>
+              </div>
+
+              <div class="hud-image-container">
+                <img src="./DP.png" alt="Sameer Mushtaq Tantray" class="hud-photo" onerror="this.src='./logo.png';" />
+                
+                <!-- 3-Way Multi-Directional Slow Scanners (Top-to-Bottom, Left-to-Right, Diagonal) -->
+                <div class="hud-scanline-v" title="Vertical Laser Scan"></div>
+                <div class="hud-scanline-h" title="Horizontal Laser Scan"></div>
+                <div class="hud-scanline-diag" title="Diagonal Laser Scan"></div>
+                <div class="hud-target-reticle"></div>
+
+                <div class="hud-overlay-text">
+                  <span class="overlay-tag">LOC: KASHMIR, INDIA</span>
+                  <span class="overlay-tag">INST: UNIV_OF_KASHMIR</span>
+                </div>
+              </div>
+
+              <div class="hud-telemetry-stats">
+                <div class="hud-stat-cell">
+                  <span class="stat-meta">RESEARCH DOMAIN</span>
+                  <span class="stat-val text-cyan">3D SPATIAL GENOMICS</span>
+                </div>
+                <div class="hud-stat-cell">
+                  <span class="stat-meta">CORE DISCIPLINE</span>
+                  <span class="stat-val text-green">MACHINE LEARNING / AI</span>
+                </div>
+                <div class="hud-stat-cell">
+                  <span class="stat-meta">LAB AFFILIATION</span>
+                  <span class="stat-val text-cyan">CIRI CHROMATIN LAB</span>
+                </div>
+                <div class="hud-stat-cell">
+                  <span class="stat-meta">SYSTEM STATUS</span>
+                  <span class="stat-val text-green">ACTIVE & COLLABORATIVE</span>
+                </div>
+              </div>
             </div>
 
-            <div class="hud-image-container">
-              <img src="./DP.png" alt="Sameer Mushtaq Tantray" class="hud-photo" onerror="this.src='./logo.png';" />
-              
-              <!-- 3-Way Multi-Directional Slow Scanners (Top-to-Bottom, Left-to-Right, Diagonal) -->
-              <div class="hud-scanline-v" title="Vertical Laser Scan"></div>
-              <div class="hud-scanline-h" title="Horizontal Laser Scan"></div>
-              <div class="hud-scanline-diag" title="Diagonal Laser Scan"></div>
-              <div class="hud-target-reticle"></div>
+            <!-- Extreme Corner Cyber Dock (CLI, SCAN, AUDIO) -->
+            <div class="hero-extreme-dock" title="System Controls">
+              <span class="dock-tag">CTRL</span>
+              <!-- CLI / Matrix Stream Toggle -->
+              <button class="hero-dock-btn" id="btn-toggle-matrix" title="Toggle Matrix Stream (CLI)" aria-label="Toggle Matrix Rain">
+                <i class="fas fa-terminal"></i>
+                <span class="dock-btn-label">CLI</span>
+              </button>
 
-              <div class="hud-overlay-text">
-                <span class="overlay-tag">LOC: KASHMIR, INDIA</span>
-                <span class="overlay-tag">INST: UNIV_OF_KASHMIR</span>
-              </div>
-            </div>
+              <!-- CRT Scanline Toggle -->
+              <button class="hero-dock-btn active" id="btn-toggle-crt" title="Toggle CRT Scanlines" aria-label="Toggle CRT Scanlines">
+                <i class="fas fa-tv"></i>
+                <span class="dock-btn-label">SCAN</span>
+              </button>
 
-            <div class="hud-telemetry-stats">
-              <div class="hud-stat-cell">
-                <span class="stat-meta">RESEARCH DOMAIN</span>
-                <span class="stat-val text-cyan">3D SPATIAL GENOMICS</span>
-              </div>
-              <div class="hud-stat-cell">
-                <span class="stat-meta">CORE DISCIPLINE</span>
-                <span class="stat-val text-green">MACHINE LEARNING / AI</span>
-              </div>
-              <div class="hud-stat-cell">
-                <span class="stat-meta">LAB AFFILIATION</span>
-                <span class="stat-val text-cyan">CIRI CHROMATIN LAB</span>
-              </div>
-              <div class="hud-stat-cell">
-                <span class="stat-meta">SYSTEM STATUS</span>
-                <span class="stat-val text-green">ACTIVE & COLLABORATIVE</span>
-              </div>
+              <!-- Audio FX Toggle -->
+              <button class="hero-dock-btn" id="btn-toggle-sound" title="Toggle Cyber Audio FX" aria-label="Toggle Audio Effects">
+                <i class="fas fa-volume-high"></i>
+                <span class="dock-btn-label">AUDIO</span>
+              </button>
             </div>
           </div>
         </div>
