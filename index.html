@@ -73,23 +73,26 @@
       </div>
 
       <div class="hud-controls">
-        <!-- Matrix Rain Toggle -->
-        <button class="hud-btn" id="btn-toggle-matrix" title="Toggle Matrix Stream" aria-label="Toggle Matrix Rain">
-          <i class="fas fa-terminal"></i>
-          <span class="btn-tooltip">MATRIX_STREAM</span>
-        </button>
-        
-        <!-- CRT Scanline Toggle -->
-        <button class="hud-btn" id="btn-toggle-crt" title="Toggle CRT Screen Glow" aria-label="Toggle CRT Scanlines">
-          <i class="fas fa-tv"></i>
-          <span class="btn-tooltip">CRT_SCANLINES</span>
-        </button>
+        <!-- Vertical HUD Controls Dock (CLI/Matrix, CRT, Audio stacked vertically) -->
+        <div class="vertical-hud-dock">
+          <!-- Matrix Rain Toggle (CLI) -->
+          <button class="hud-btn" id="btn-toggle-matrix" title="Toggle Matrix Stream (CLI)" aria-label="Toggle Matrix Rain">
+            <i class="fas fa-terminal"></i>
+            <span class="btn-tooltip">CLI_MATRIX</span>
+          </button>
+          
+          <!-- CRT Scanline Toggle -->
+          <button class="hud-btn" id="btn-toggle-crt" title="Toggle CRT Screen Glow" aria-label="Toggle CRT Scanlines">
+            <i class="fas fa-tv"></i>
+            <span class="btn-tooltip">CRT_SCANLINES</span>
+          </button>
 
-        <!-- Audio FX Toggle -->
-        <button class="hud-btn" id="btn-toggle-sound" title="Toggle Cyber Audio FX" aria-label="Toggle Audio Effects">
-          <i class="fas fa-volume-high"></i>
-          <span class="btn-tooltip">AUDIO_SYNTH</span>
-        </button>
+          <!-- Audio FX Toggle -->
+          <button class="hud-btn" id="btn-toggle-sound" title="Toggle Cyber Audio FX" aria-label="Toggle Audio Effects">
+            <i class="fas fa-volume-high"></i>
+            <span class="btn-tooltip">AUDIO_SYNTH</span>
+          </button>
+        </div>
 
         <!-- Download CV -->
         <a href="./CV_Sameer.pdf" download="CV_Sameer.pdf" class="hud-btn hud-btn-cv" title="Download CV ($ wget ./CV_Sameer.pdf)">
@@ -133,28 +136,6 @@
           <p class="hero-bio-lead">
             Pioneering cutting-edge <strong>Machine Learning & Graph Neural Architectures</strong> to decode <strong>3D Spatial Genomics</strong> and high-order chromatin topology. Operating at the convergence of AI, computational biology, HPC cluster orchestration, and resilient systems engineering.
           </p>
-
-          <!-- Quick Cyber Action Buttons -->
-          <div class="hero-actions">
-            <a href="#contact" class="cyber-btn cyber-btn-primary">
-              <span class="btn-bracket">[</span>
-              <i class="fas fa-paper-plane"></i>
-              <span>INITIATE_CONTACT</span>
-              <span class="btn-bracket">]</span>
-            </a>
-            <a href="#projects" class="cyber-btn cyber-btn-secondary">
-              <span class="btn-bracket">[</span>
-              <i class="fas fa-code-fork"></i>
-              <span>VIEW_DEPLOYMENTS</span>
-              <span class="btn-bracket">]</span>
-            </a>
-            <a href="./CV_Sameer.pdf" download="CV_Sameer.pdf" class="cyber-btn cyber-btn-ghost">
-              <span class="btn-bracket">[</span>
-              <i class="fas fa-download"></i>
-              <span>DOWNLOAD_CV</span>
-              <span class="btn-bracket">]</span>
-            </a>
-          </div>
 
           <!-- All Transmission Channels -->
           <div class="hero-socials-bar">
