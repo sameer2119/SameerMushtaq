@@ -47,7 +47,7 @@
         <span class="hud-val text-green">100% OPERATIONAL</span>
       </div>
       <div class="telemetry-item right-align">
-        <span class="hud-label">SYS_TIME:</span>
+        <span class="hud-label">TIME_IST:</span>
         <span class="hud-val text-green" id="sys-clock">--:--:-- IST</span>
       </div>
     </div>
@@ -57,32 +57,22 @@
         function renderIST() {
           var el = document.getElementById('sys-clock');
           if (!el) return;
-          var targetTime = new Date(Date.now() + offsetMs);
-          try {
-            var fmt = new Intl.DateTimeFormat('en-IN', {
-              timeZone: 'Asia/Kolkata',
-              hour12: true,
-              hour: '2-digit',
-              minute: '2-digit',
-              second: '2-digit'
-            });
-            el.textContent = fmt.format(targetTime).toUpperCase() + ' IST';
-          } catch(e) {
-            var utc = targetTime.getTime() + (targetTime.getTimezoneOffset() * 60000);
-            var ist = new Date(utc + (330 * 60000));
-            var h = ist.getHours();
-            var ap = h >= 12 ? 'PM' : 'AM';
-            h = h % 12 || 12;
-            var hs = (h < 10 ? '0' : '') + h;
-            var ms = (ist.getMinutes() < 10 ? '0' : '') + ist.getMinutes();
-            var ss = (ist.getSeconds() < 10 ? '0' : '') + ist.getSeconds();
-            el.textContent = hs + ':' + ms + ':' + ss + ' ' + ap + ' IST';
-          }
+          var now = new Date(Date.now() + offsetMs);
+          // Calculate UTC + 5:30 (Indian Standard Time)
+          var utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+          var ist = new Date(utc + (330 * 60000));
+          var h = ist.getHours();
+          var ap = h >= 12 ? 'PM' : 'AM';
+          var h12 = h % 12 || 12;
+          var hh = (h12 < 10 ? '0' : '') + h12;
+          var mm = (ist.getMinutes() < 10 ? '0' : '') + ist.getMinutes();
+          var ss = (ist.getSeconds() < 10 ? '0' : '') + ist.getSeconds();
+          el.textContent = hh + ':' + mm + ':' + ss + ' ' + ap + ' IST';
         }
         renderIST();
         setInterval(renderIST, 1000);
 
-        // Synchronize with Internet Time API (IST)
+        // Fetch internet time synchronization
         fetch('https://worldtimeapi.org/api/timezone/Asia/Kolkata')
           .then(function(r) { return r.json(); })
           .then(function(data) {

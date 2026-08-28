@@ -171,31 +171,18 @@
     const clockEl = document.getElementById('sys-clock');
     if (!clockEl) return;
 
-    const istFormatter = new Intl.DateTimeFormat('en-US', {
-      timeZone: 'Asia/Kolkata',
-      hour12: true,
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
-    });
-
     function update() {
       const now = new Date();
-      try {
-        const istStr = istFormatter.format(now).toUpperCase();
-        clockEl.textContent = `${istStr} IST`;
-      } catch (e) {
-        // Fallback calculation for UTC+05:30
-        const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
-        const istDate = new Date(utcMs + (330 * 60000));
-        let hours = istDate.getHours();
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12 || 12;
-        const hoursStr = String(hours).padStart(2, '0');
-        const mins = String(istDate.getMinutes()).padStart(2, '0');
-        const secs = String(istDate.getSeconds()).padStart(2, '0');
-        clockEl.textContent = `${hoursStr}:${mins}:${secs} ${ampm} IST`;
-      }
+      // Explicit UTC + 5 hours 30 mins calculation
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const ist = new Date(utc + (330 * 60000));
+      const h = ist.getHours();
+      const ap = h >= 12 ? 'PM' : 'AM';
+      const h12 = h % 12 || 12;
+      const hh = String(h12).padStart(2, '0');
+      const mm = String(ist.getMinutes()).padStart(2, '0');
+      const ss = String(ist.getSeconds()).padStart(2, '0');
+      clockEl.textContent = `${hh}:${mm}:${ss} ${ap} IST`;
     }
     update();
     setInterval(update, 1000);
