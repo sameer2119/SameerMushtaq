@@ -293,10 +293,10 @@
     "stack": ["Next.js", "TailwindCSS", "D2CCommerce", "CustomConfigurator"]
   },
   "04": {
-    "title": "3D Spatial Genomics ML Pipeline",
-    "role": "Lead ML Architect & Principal Investigator",
-    "repo": "https://github.com/SameerMushtaq",
-    "stack": ["PyTorch", "GNNs", "Hi-C", "TAD_Predictor"]
+    "title": "Hostel Management System",
+    "role": "Lead Full-Stack Developer & Database Architect",
+    "access": "Private Enterprise Platform",
+    "stack": ["DatabaseArchitecture", "RoleBasedAccess", "ResidenceManagement", "Security"]
   }
 }`,
 
@@ -304,7 +304,7 @@
 1. Instrument Bookings System - CIRI (https://ablabinstruments.vercel.app)
 2. Placement Management System - IUST (Internal University Portal)
 3. F2 Sports — E-Commerce Store (https://f2sportsstore.vercel.app)
-4. 3D Spatial Genomics ML Pipeline (https://github.com/SameerMushtaq)`,
+4. Hostel Management System (Private Enterprise Portal)`,
 
     'status --cluster': `[CIRI-HPC-CLUSTER STATUS TELEMETRY]:
 - Node ID: CIRI-ML-NODE-01 (Ubuntu 22.04 LTS Kernel 6.8.0-HPC)
