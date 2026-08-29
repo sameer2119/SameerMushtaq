@@ -165,27 +165,74 @@
   }
 
   // --------------------------------------------------------------------------
-  // 3. Live Real-Time Telemetry Clock (Indian Standard Time - IST)
+  // 3. Live Real-Time Telemetry Clock (True Internet Indian Standard Time - IST)
   // --------------------------------------------------------------------------
   function initLiveClock() {
     const clockEl = document.getElementById('sys-clock');
     if (!clockEl) return;
 
-    function update() {
-      const now = new Date();
-      // Explicit UTC + 5 hours 30 mins calculation
-      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-      const ist = new Date(utc + (330 * 60000));
-      const h = ist.getHours();
+    let internetUtcAnchorMs = Date.now();
+    let perfAnchorMs = performance.now();
+
+    function renderTrueIST() {
+      const elapsedMs = performance.now() - perfAnchorMs;
+      const currentUtcMs = internetUtcAnchorMs + elapsedMs;
+      
+      // Indian Standard Time is strictly UTC + 5 hours 30 minutes (19,800,000 ms)
+      const istMs = currentUtcMs + 19800000;
+      const istDate = new Date(istMs);
+      
+      // Use UTC getters so local system timezone NEVER affects the result
+      let h = istDate.getUTCHours();
       const ap = h >= 12 ? 'PM' : 'AM';
-      const h12 = h % 12 || 12;
-      const hh = String(h12).padStart(2, '0');
-      const mm = String(ist.getMinutes()).padStart(2, '0');
-      const ss = String(ist.getSeconds()).padStart(2, '0');
+      h = h % 12 || 12;
+      const hh = String(h).padStart(2, '0');
+      const mm = String(istDate.getUTCMinutes()).padStart(2, '0');
+      const ss = String(istDate.getUTCSeconds()).padStart(2, '0');
+      
       clockEl.textContent = `${hh}:${mm}:${ss} ${ap} IST`;
     }
-    update();
-    setInterval(update, 1000);
+
+    renderTrueIST();
+    setInterval(renderTrueIST, 1000);
+
+    function setAnchor(utcTimestampMs) {
+      if (!utcTimestampMs || isNaN(utcTimestampMs)) return;
+      internetUtcAnchorMs = utcTimestampMs;
+      perfAnchorMs = performance.now();
+      renderTrueIST();
+    }
+
+    // 1. Fetch Atomic Time from Web Server Response Header
+    fetch(window.location.href, { method: 'HEAD', cache: 'no-store' })
+      .then((res) => {
+        const sDate = res.headers.get('Date');
+        if (sDate) {
+          const sMs = new Date(sDate).getTime();
+          if (!isNaN(sMs)) setAnchor(sMs);
+        }
+      })
+      .catch(() => {});
+
+    // 2. Fetch Internet Time API (Asia/Kolkata)
+    fetch('https://worldtimeapi.org/api/timezone/Asia/Kolkata')
+      .then((r) => r.json())
+      .then((data) => {
+        if (data && data.unixtime) {
+          setAnchor(data.unixtime * 1000);
+        }
+      })
+      .catch(() => {
+        fetch('https://timeapi.io/api/time/current/zone?timeZone=Asia/Kolkata')
+          .then((r) => r.json())
+          .then((d) => {
+            if (d && d.dateTime) {
+              const sTime = new Date(d.dateTime + 'Z').getTime();
+              if (!isNaN(sTime)) setAnchor(sTime);
+            }
+          })
+          .catch(() => {});
+      });
   }
 
   // --------------------------------------------------------------------------
