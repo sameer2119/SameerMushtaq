@@ -1029,9 +1029,11 @@
       }
     });
 
+    audio.loop = true;
+
     audio.addEventListener('ended', () => {
-      const nextIdx = (currentIdx + 1) % tracks.length;
-      playTrack(nextIdx);
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
     });
 
     if (progressWrap) {
