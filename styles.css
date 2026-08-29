@@ -168,14 +168,19 @@ body:not(.crt-enabled) .hud-scanline-diag {
 /* --------------------------------------------------------------------------
    2. Top Telemetry Bar & Navigation
    -------------------------------------------------------------------------- */
-.telemetry-bar {
-  background: rgba(5, 8, 14, 0.95);
-  border-bottom: 1px solid var(--border-cyan);
-  font-size: 0.725rem;
-  padding: 0.4rem 1.75rem;
+.site-header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100%;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
+}
+
+.telemetry-bar {
+  background: rgba(4, 7, 12, 0.98);
+  border-bottom: 1px solid rgba(0, 243, 255, 0.25);
+  font-size: 0.78rem;
+  padding: 0.35rem 1.75rem;
   backdrop-filter: blur(10px);
 }
 
@@ -195,6 +200,20 @@ body:not(.crt-enabled) .hud-scanline-diag {
 
 .telemetry-item.right-align {
   margin-left: auto;
+}
+
+.telemetry-clock-pill {
+  background: rgba(0, 255, 65, 0.08);
+  border: 1px solid rgba(0, 255, 65, 0.4);
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.15);
+}
+
+.telemetry-clock-pill #sys-clock {
+  color: var(--neon-green) !important;
+  font-weight: 700;
+  letter-spacing: 0.3px;
 }
 
 .hud-dot {
@@ -229,15 +248,33 @@ body:not(.crt-enabled) .hud-scanline-diag {
 
 /* Cyber Navbar */
 .cyber-navbar {
-  background: rgba(8, 12, 20, 0.92);
+  background: rgba(8, 12, 20, 0.96);
   border-bottom: 1px solid var(--border-cyan);
-  padding: 0.75rem 1.75rem;
-  position: sticky;
-  top: 27px;
-  z-index: 999;
+  padding: 0.7rem 1.75rem;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow: var(--shadow-hud);
+}
+
+.nav-clock-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(0, 255, 65, 0.08);
+  border: 1px solid rgba(0, 255, 65, 0.4);
+  padding: 0.32rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--neon-green);
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.2);
+  white-space: nowrap;
+}
+
+.nav-clock-pill .nav-clock-text {
+  color: var(--neon-green) !important;
+  font-weight: 700;
 }
 
 .nav-container {
@@ -2077,7 +2114,23 @@ body:not(.crt-enabled) .hud-scanline-diag {
   }
 }
 
+@media (max-width: 768px) {
+  .nav-clock-pill {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
 @media (max-width: 600px) {
+  .nav-clock-pill {
+    display: none;
+  }
+
+  .telemetry-clock-pill {
+    font-size: 0.72rem;
+    padding: 0.1rem 0.45rem;
+  }
+
   .hero-name {
     font-size: 2rem;
   }

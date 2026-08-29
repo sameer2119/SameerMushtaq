@@ -26,136 +26,175 @@
   <div class="crt-overlay" id="crt-overlay"></div>
   <div class="cyber-grid-bg"></div>
 
-  <!-- Top Real-Time Telemetry HUD Bar -->
-  <header class="telemetry-bar">
-    <div class="telemetry-inner">
-      <div class="telemetry-item live-pulse">
-        <span class="hud-dot green"></span>
-        <span class="hud-label">NODE:</span>
-        <span class="hud-val">CIRI-HPC-CLUSTER</span>
+  <!-- Top Real-Time Telemetry HUD Bar & Navigation Header -->
+  <div class="site-header">
+    <header class="telemetry-bar">
+      <div class="telemetry-inner">
+        <div class="telemetry-item live-pulse">
+          <span class="hud-dot green"></span>
+          <span class="hud-label">NODE:</span>
+          <span class="hud-val">CIRI-HPC-CLUSTER</span>
+        </div>
+        <div class="telemetry-item hide-mobile">
+          <span class="hud-label">KERNEL:</span>
+          <span class="hud-val">LINUX-6.8.0-GENOMICS</span>
+        </div>
+        <div class="telemetry-item hide-mobile">
+          <span class="hud-label">PIPELINE:</span>
+          <span class="hud-val text-cyan">3D-HI-C-PREDICTOR [v2.4]</span>
+        </div>
+        <div class="telemetry-item hide-mobile">
+          <span class="hud-label">STATUS:</span>
+          <span class="hud-val text-green">100% OPERATIONAL</span>
+        </div>
+        <div class="telemetry-item right-align telemetry-clock-pill">
+          <span class="hud-dot green"></span>
+          <span class="hud-label">DATE / TIME (IST):</span>
+          <span class="hud-val text-green" id="sys-clock">--:--:-- IST</span>
+        </div>
       </div>
-      <div class="telemetry-item">
-        <span class="hud-label">KERNEL:</span>
-        <span class="hud-val">LINUX-6.8.0-GENOMICS</span>
-      </div>
-      <div class="telemetry-item hide-mobile">
-        <span class="hud-label">PIPELINE:</span>
-        <span class="hud-val text-cyan">3D-HI-C-PREDICTOR [v2.4]</span>
-      </div>
-      <div class="telemetry-item hide-mobile">
-        <span class="hud-label">STATUS:</span>
-        <span class="hud-val text-green">100% OPERATIONAL</span>
-      </div>
-      <div class="telemetry-item right-align">
-        <span class="hud-label">INTERNET_TIME (IST):</span>
-        <span class="hud-val text-green" id="sys-clock">--:--:-- IST</span>
-      </div>
-    </div>
-    <script>
-      (function() {
-        var internetUtcAnchorMs = Date.now();
-        var perfAnchorMs = performance.now();
-        var isSynced = false;
+    </header>
 
-        function renderTrueIST() {
-          var el = document.getElementById('sys-clock');
-          if (!el) return;
-          
-          var elapsedMs = performance.now() - perfAnchorMs;
-          var currentUtcMs = internetUtcAnchorMs + elapsedMs;
-          
-          // Indian Standard Time is strictly UTC + 5 hours 30 minutes (19,800,000 ms)
-          var istMs = currentUtcMs + 19800000;
-          var istDate = new Date(istMs);
-          
-          // Use UTC getters so local system timezone NEVER affects the result
-          var h = istDate.getUTCHours();
-          var ap = h >= 12 ? 'PM' : 'AM';
-          var h12 = h % 12 || 12;
-          var hh = (h12 < 10 ? '0' : '') + h12;
-          var mm = (istDate.getUTCMinutes() < 10 ? '0' : '') + istDate.getUTCMinutes();
-          var ss = (istDate.getUTCSeconds() < 10 ? '0' : '') + istDate.getUTCSeconds();
-          
-          el.textContent = hh + ':' + mm + ':' + ss + ' ' + ap + ' IST';
-        }
+    <!-- Main Cyber Navigation HUD -->
+    <nav class="cyber-navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="cyber-logo">
+          <img src="./logo.png" alt="Digital Ninja Logo" class="nav-logo-img" />
+          <span class="logo-text"><span class="text-cyan">DIGITAL</span> <span class="text-green">NINJA</span></span>
+        </a>
 
+        <div class="cyber-nav-links" id="nav-links">
+          <a href="#home" class="nav-link active"><span class="nav-num">01.</span>//HOME</a>
+          <a href="#terminal-section" class="nav-link"><span class="nav-num">02.</span>//CLI_TERM</a>
+          <a href="#profile" class="nav-link"><span class="nav-num">03.</span>//BIO_SYS</a>
+          <a href="#expertise" class="nav-link"><span class="nav-num">04.</span>//TECH_STACK</a>
+          <a href="#services" class="nav-link"><span class="nav-num">05.</span>//SERVICES</a>
+          <a href="#projects" class="nav-link"><span class="nav-num">06.</span>//PROJECTS</a>
+          <a href="#interests" class="nav-link"><span class="nav-num">07.</span>//INTERESTS</a>
+          <a href="#contact" class="nav-link"><span class="nav-num">08.</span>//TRANSMIT</a>
+        </div>
+
+        <div class="hud-controls">
+          <!-- Live Date & Time IST Badge in Header Bar -->
+          <div class="nav-clock-pill" title="Live Internet Time (IST)">
+            <i class="fas fa-clock text-green"></i>
+            <span class="nav-clock-text" id="nav-sys-clock">--:--:-- IST</span>
+          </div>
+
+          <!-- Download CV -->
+          <a href="./CV_Sameer.pdf" download="CV_Sameer.pdf" class="hud-btn hud-btn-cv" title="Download CV ($ wget ./CV_Sameer.pdf)">
+            <i class="fas fa-file-code"></i>
+            <span>WGET_CV.PDF</span>
+          </a>
+
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Navigation Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    (function() {
+      var internetUtcAnchorMs = Date.now();
+      var perfAnchorMs = performance.now();
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+      function renderTrueIST() {
+        var el1 = document.getElementById('sys-clock');
+        var el2 = document.getElementById('nav-sys-clock');
+        if (!el1 && !el2) return;
+        
+        var elapsedMs = performance.now() - perfAnchorMs;
+        var currentUtcMs = internetUtcAnchorMs + elapsedMs;
+        
+        // Indian Standard Time is strictly UTC + 5 hours 30 minutes (19,800,000 ms)
+        var istMs = currentUtcMs + 19800000;
+        var istDate = new Date(istMs);
+        
+        // Date format: 29-Aug-26
+        var day = istDate.getUTCDate();
+        var dd = (day < 10 ? '0' : '') + day;
+        var mon = months[istDate.getUTCMonth()];
+        var yy = String(istDate.getUTCFullYear()).slice(-2);
+        var dateStr = dd + '-' + mon + '-' + yy;
+
+        // Time format: 10:34:44 AM IST
+        var h = istDate.getUTCHours();
+        var ap = h >= 12 ? 'PM' : 'AM';
+        var h12 = h % 12 || 12;
+        var hh = (h12 < 10 ? '0' : '') + h12;
+        var mm = (istDate.getUTCMinutes() < 10 ? '0' : '') + istDate.getUTCMinutes();
+        var ss = (istDate.getUTCSeconds() < 10 ? '0' : '') + istDate.getUTCSeconds();
+        var timeStr = hh + ':' + mm + ':' + ss + ' ' + ap + ' IST';
+        var fullStr = dateStr + ' ' + timeStr;
+        
+        if (el1) el1.textContent = fullStr;
+        if (el2) el2.textContent = fullStr;
+      }
+
+      window.__setISTAnchor = function(utcTimestampMs) {
+        if (!utcTimestampMs || isNaN(utcTimestampMs)) return;
+        internetUtcAnchorMs = utcTimestampMs;
+        perfAnchorMs = performance.now();
         renderTrueIST();
-        setInterval(renderTrueIST, 1000);
+      };
 
-        function setAnchor(utcTimestampMs) {
-          if (!utcTimestampMs || isNaN(utcTimestampMs)) return;
-          internetUtcAnchorMs = utcTimestampMs;
-          perfAnchorMs = performance.now();
-          isSynced = true;
-          renderTrueIST();
-        }
+      renderTrueIST();
+      if (!window.__istInterval) {
+        window.__istInterval = setInterval(renderTrueIST, 1000);
+      }
 
-        // 1. Fetch Atomic Time from GitHub / Web Server Response Header
+      function syncTime() {
+        // 1. Fetch Atomic Time from GitHub Pages / Web Server Response Header
         fetch(window.location.href, { method: 'HEAD', cache: 'no-store' })
           .then(function(res) {
-            var sDate = res.headers.get('Date');
+            var sDate = res.headers.get('Date') || res.headers.get('date');
             if (sDate) {
               var sMs = new Date(sDate).getTime();
-              if (!isNaN(sMs)) setAnchor(sMs);
+              if (!isNaN(sMs)) window.__setISTAnchor(sMs);
             }
           })
           .catch(function() {});
 
-        // 2. Fetch Internet Time API (Asia/Kolkata)
-        fetch('https://worldtimeapi.org/api/timezone/Asia/Kolkata')
+        // 2. Fetch from GitHub API
+        fetch('https://api.github.com/users/SameerMushtaq', { cache: 'no-store' })
+          .then(function(res) {
+            var sDate = res.headers.get('Date') || res.headers.get('date');
+            if (sDate) {
+              var sMs = new Date(sDate).getTime();
+              if (!isNaN(sMs)) window.__setISTAnchor(sMs);
+            }
+          })
+          .catch(function() {});
+
+        // 3. Fetch TimeAPI.io (Asia/Kolkata)
+        fetch('https://timeapi.io/api/time/current/zone?timeZone=Asia/Kolkata')
           .then(function(r) { return r.json(); })
-          .then(function(data) {
-            if (data && data.unixtime) {
-              setAnchor(data.unixtime * 1000);
+          .then(function(d) {
+            if (d && d.dateTime) {
+              var sTime = new Date(d.dateTime + 'Z').getTime();
+              if (!isNaN(sTime)) window.__setISTAnchor(sTime);
             }
           })
           .catch(function() {
-            fetch('https://timeapi.io/api/time/current/zone?timeZone=Asia/Kolkata')
+            fetch('https://worldtimeapi.org/api/timezone/Asia/Kolkata')
               .then(function(r) { return r.json(); })
-              .then(function(d) {
-                if (d && d.dateTime) {
-                  var sTime = new Date(d.dateTime + 'Z').getTime();
-                  if (!isNaN(sTime)) setAnchor(sTime);
+              .then(function(data) {
+                if (data && data.unixtime) {
+                  window.__setISTAnchor(data.unixtime * 1000);
                 }
               }).catch(function(){});
           });
-      })();
-    </script>
-  </header>
+      }
 
-  <!-- Main Cyber Navigation HUD -->
-  <nav class="cyber-navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#home" class="cyber-logo">
-        <img src="./logo.png" alt="Digital Ninja Logo" class="nav-logo-img" />
-        <span class="logo-text"><span class="text-cyan">DIGITAL</span> <span class="text-green">NINJA</span></span>
-      </a>
-
-      <div class="cyber-nav-links" id="nav-links">
-        <a href="#home" class="nav-link active"><span class="nav-num">01.</span>//HOME</a>
-        <a href="#terminal-section" class="nav-link"><span class="nav-num">02.</span>//CLI_TERM</a>
-        <a href="#profile" class="nav-link"><span class="nav-num">03.</span>//BIO_SYS</a>
-        <a href="#expertise" class="nav-link"><span class="nav-num">04.</span>//TECH_STACK</a>
-        <a href="#services" class="nav-link"><span class="nav-num">05.</span>//SERVICES</a>
-        <a href="#projects" class="nav-link"><span class="nav-num">06.</span>//PROJECTS</a>
-        <a href="#interests" class="nav-link"><span class="nav-num">07.</span>//INTERESTS</a>
-        <a href="#contact" class="nav-link"><span class="nav-num">08.</span>//TRANSMIT</a>
-      </div>
-
-      <div class="hud-controls">
-        <!-- Download CV -->
-        <a href="./CV_Sameer.pdf" download="CV_Sameer.pdf" class="hud-btn hud-btn-cv" title="Download CV ($ wget ./CV_Sameer.pdf)">
-          <i class="fas fa-file-code"></i>
-          <span>WGET_CV.PDF</span>
-        </a>
-
-        <!-- Mobile Menu Toggle -->
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Navigation Menu">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-    </div>
-  </nav>
+      syncTime();
+      window.addEventListener('focus', syncTime);
+      setInterval(syncTime, 300000);
+    })();
+  </script>
 
   <div class="content-wrapper">
 
@@ -961,6 +1000,6 @@
   <div class="toast-container" id="toast-container"></div>
 
   <!-- Script Engine -->
-  <script src="script.js?v=2026.08.29.1"></script>
+  <script src="script.js?v=2026.08.29.2"></script>
 </body>
 </html>

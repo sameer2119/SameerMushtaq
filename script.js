@@ -169,7 +169,10 @@
   // --------------------------------------------------------------------------
   function initLiveClock() {
     const clockEl = document.getElementById('sys-clock');
-    if (!clockEl) return;
+    const navClockEl = document.getElementById('nav-sys-clock');
+    if (!clockEl && !navClockEl) return;
+
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     let internetUtcAnchorMs = Date.now();
     let perfAnchorMs = performance.now();
@@ -182,19 +185,26 @@
       const istMs = currentUtcMs + 19800000;
       const istDate = new Date(istMs);
       
-      // Use UTC getters so local system timezone NEVER affects the result
+      // Date format: 29-Aug-26
+      const day = istDate.getUTCDate();
+      const dd = (day < 10 ? '0' : '') + day;
+      const mon = months[istDate.getUTCMonth()];
+      const yy = String(istDate.getUTCFullYear()).slice(-2);
+      const dateStr = `${dd}-${mon}-${yy}`;
+
+      // Time format: 10:34:44 AM IST
       let h = istDate.getUTCHours();
       const ap = h >= 12 ? 'PM' : 'AM';
-      h = h % 12 || 12;
-      const hh = String(h).padStart(2, '0');
+      const h12 = h % 12 || 12;
+      const hh = String(h12).padStart(2, '0');
       const mm = String(istDate.getUTCMinutes()).padStart(2, '0');
       const ss = String(istDate.getUTCSeconds()).padStart(2, '0');
+      const timeStr = `${hh}:${mm}:${ss} ${ap} IST`;
+      const fullDisplay = `${dateStr} ${timeStr}`;
       
-      clockEl.textContent = `${hh}:${mm}:${ss} ${ap} IST`;
+      if (clockEl) clockEl.textContent = fullDisplay;
+      if (navClockEl) navClockEl.textContent = fullDisplay;
     }
-
-    renderTrueIST();
-    setInterval(renderTrueIST, 1000);
 
     function setAnchor(utcTimestampMs) {
       if (!utcTimestampMs || isNaN(utcTimestampMs)) return;
@@ -203,36 +213,60 @@
       renderTrueIST();
     }
 
-    // 1. Fetch Atomic Time from Web Server Response Header
-    fetch(window.location.href, { method: 'HEAD', cache: 'no-store' })
-      .then((res) => {
-        const sDate = res.headers.get('Date');
-        if (sDate) {
-          const sMs = new Date(sDate).getTime();
-          if (!isNaN(sMs)) setAnchor(sMs);
-        }
-      })
-      .catch(() => {});
+    window.__setISTAnchor = setAnchor;
 
-    // 2. Fetch Internet Time API (Asia/Kolkata)
-    fetch('https://worldtimeapi.org/api/timezone/Asia/Kolkata')
-      .then((r) => r.json())
-      .then((data) => {
-        if (data && data.unixtime) {
-          setAnchor(data.unixtime * 1000);
-        }
-      })
-      .catch(() => {
-        fetch('https://timeapi.io/api/time/current/zone?timeZone=Asia/Kolkata')
-          .then((r) => r.json())
-          .then((d) => {
-            if (d && d.dateTime) {
-              const sTime = new Date(d.dateTime + 'Z').getTime();
-              if (!isNaN(sTime)) setAnchor(sTime);
-            }
-          })
-          .catch(() => {});
-      });
+    renderTrueIST();
+    if (!window.__istInterval) {
+      window.__istInterval = setInterval(renderTrueIST, 1000);
+    }
+
+    function syncInternetTime() {
+      // 1. Fetch Atomic Time from GitHub Pages / Web Server Response Header
+      fetch(window.location.href, { method: 'HEAD', cache: 'no-store' })
+        .then((res) => {
+          const sDate = res.headers.get('Date') || res.headers.get('date');
+          if (sDate) {
+            const sMs = new Date(sDate).getTime();
+            if (!isNaN(sMs)) setAnchor(sMs);
+          }
+        })
+        .catch(() => {});
+
+      // 2. Fetch from GitHub API
+      fetch('https://api.github.com/users/SameerMushtaq', { cache: 'no-store' })
+        .then((res) => {
+          const sDate = res.headers.get('Date') || res.headers.get('date');
+          if (sDate) {
+            const sMs = new Date(sDate).getTime();
+            if (!isNaN(sMs)) setAnchor(sMs);
+          }
+        })
+        .catch(() => {});
+
+      // 3. Fetch TimeAPI.io (Asia/Kolkata)
+      fetch('https://timeapi.io/api/time/current/zone?timeZone=Asia/Kolkata')
+        .then((r) => r.json())
+        .then((d) => {
+          if (d && d.dateTime) {
+            const sTime = new Date(d.dateTime + 'Z').getTime();
+            if (!isNaN(sTime)) setAnchor(sTime);
+          }
+        })
+        .catch(() => {
+          fetch('https://worldtimeapi.org/api/timezone/Asia/Kolkata')
+            .then((r) => r.json())
+            .then((data) => {
+              if (data && data.unixtime) {
+                setAnchor(data.unixtime * 1000);
+              }
+            })
+            .catch(() => {});
+        });
+    }
+
+    syncInternetTime();
+    window.addEventListener('focus', syncInternetTime);
+    setInterval(syncInternetTime, 300000);
   }
 
   // --------------------------------------------------------------------------
