@@ -169,8 +169,7 @@
   // --------------------------------------------------------------------------
   function initLiveClock() {
     const clockEl = document.getElementById('sys-clock');
-    const navClockEl = document.getElementById('nav-sys-clock');
-    if (!clockEl && !navClockEl) return;
+    if (!clockEl) return;
 
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -200,10 +199,8 @@
       const mm = String(istDate.getUTCMinutes()).padStart(2, '0');
       const ss = String(istDate.getUTCSeconds()).padStart(2, '0');
       const timeStr = `${hh}:${mm}:${ss} ${ap} IST`;
-      const fullDisplay = `${dateStr} ${timeStr}`;
       
-      if (clockEl) clockEl.textContent = fullDisplay;
-      if (navClockEl) navClockEl.textContent = fullDisplay;
+      clockEl.textContent = `${dateStr} ${timeStr}`;
     }
 
     function setAnchor(utcTimestampMs) {

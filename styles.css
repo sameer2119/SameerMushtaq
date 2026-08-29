@@ -276,29 +276,6 @@ body:not(.crt-enabled) .hud-scanline-diag {
   box-shadow: var(--shadow-hud);
 }
 
-.nav-clock-pill {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  background: rgba(0, 255, 65, 0.12);
-  border: 1.5px solid var(--neon-green);
-  padding: 0.35rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.78rem;
-  font-weight: 800;
-  font-family: var(--font-mono);
-  color: #00ff41;
-  box-shadow: 0 0 14px rgba(0, 255, 65, 0.35);
-  white-space: nowrap;
-  letter-spacing: 0.4px;
-}
-
-.nav-clock-pill .nav-clock-text {
-  color: #00ff41 !important;
-  font-weight: 800;
-  text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
-}
-
 .nav-container {
   max-width: 1380px;
   margin: 0 auto;
@@ -2137,18 +2114,7 @@ body:not(.crt-enabled) .hud-scanline-diag {
   }
 }
 
-@media (max-width: 768px) {
-  .nav-clock-pill {
-    font-size: 0.72rem;
-    padding: 0.25rem 0.5rem;
-  }
-}
-
 @media (max-width: 600px) {
-  .nav-clock-pill {
-    display: none;
-  }
-
   .telemetry-clock-pill {
     font-size: 0.72rem;
     padding: 0.1rem 0.45rem;

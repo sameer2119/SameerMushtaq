@@ -75,12 +75,6 @@
         </div>
 
         <div class="hud-controls">
-          <!-- Live Date & Time IST Badge in Header Bar -->
-          <div class="nav-clock-pill" title="Live Internet Time (IST)">
-            <i class="fas fa-clock text-green"></i>
-            <span class="nav-clock-text" id="nav-sys-clock">29-Aug-26 10:51:20 AM IST</span>
-          </div>
-
           <!-- Download CV -->
           <a href="./CV_Sameer.pdf" download="CV_Sameer.pdf" class="hud-btn hud-btn-cv" title="Download CV ($ wget ./CV_Sameer.pdf)">
             <i class="fas fa-file-code"></i>
@@ -103,9 +97,8 @@
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
       function renderTrueIST() {
-        var el1 = document.getElementById('sys-clock');
-        var el2 = document.getElementById('nav-sys-clock');
-        if (!el1 && !el2) return;
+        var el = document.getElementById('sys-clock');
+        if (!el) return;
         
         var elapsedMs = performance.now() - perfAnchorMs;
         var currentUtcMs = internetUtcAnchorMs + elapsedMs;
@@ -129,10 +122,8 @@
         var mm = (istDate.getUTCMinutes() < 10 ? '0' : '') + istDate.getUTCMinutes();
         var ss = (istDate.getUTCSeconds() < 10 ? '0' : '') + istDate.getUTCSeconds();
         var timeStr = hh + ':' + mm + ':' + ss + ' ' + ap + ' IST';
-        var fullStr = dateStr + ' ' + timeStr;
         
-        if (el1) el1.textContent = fullStr;
-        if (el2) el2.textContent = fullStr;
+        el.textContent = dateStr + ' ' + timeStr;
       }
 
       window.__setISTAnchor = function(utcTimestampMs) {
